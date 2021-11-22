@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Company Pets</string>
+
+    /* Titulos e descricoes dos slides boas vindas */
+    // Titulos
+    <string name="tituloBoasvindas1">Quick &amp; Easy Payments</string>
+    <string name="tituloBoasvindas2">Quick &amp; Easy Payments</string>
+    <string name="tituloBoasvindas3">Quick &amp; Easy Payments</string>
+    <string name="tituloBoasvindas4">Instant Notifications</string>
+    <string name="tituloBoasvindas5">Pay Anywhere</string>
+    // Descricoes
+    <string name="descricaoBoasvindas1">teste  &amp; 1</string>
+    <string name="descricaoBoasvindas2">teste 2</string>
+    <string name="descricaoBoasvindas3">teste 3</string>
+    <string name="descricaoBoasvindas4">teste 4</string>
+    <string name="descricaoBoasvindas5">teste 5</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    /* Fim titulos e descricoes dos slides boas vindas */
+
+    <string-array name="spinner_sexo">
+        <item>Escolha seu sexo</item>
+        <item>Masculino</item>
+        <item>Feminino</item>
+        <item>Personalizado</item>
+    </string-array>
+
+</resources>
