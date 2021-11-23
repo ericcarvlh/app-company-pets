@@ -63,10 +63,10 @@ public class CadastroFragment2 extends Fragment
                 dto.setEmail(editTextEmail.getText().toString());
                 dto.setSenha(editTextSenha.getText().toString());
 
-                if(dto.getEmail().equals(""))
-                    Toast.makeText(getActivity(), "É obrigatório informar o email", Toast.LENGTH_SHORT).show();
+                if(dto.getEmail().equals("") || dto.getEmail().length()<6)
+                    Toast.makeText(getActivity(), "É obrigatório informar o email, com no máximo 60 caracteres", Toast.LENGTH_SHORT).show();
                 else if(dto.getSenha().equals("") || dto.getSenha().length()<10)
-                    Toast.makeText(getActivity(), "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 digitos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 caracteres.", Toast.LENGTH_SHORT).show();
                 else{
                     try {
                         CadastroFragment3 fragment = new CadastroFragment3(dto);

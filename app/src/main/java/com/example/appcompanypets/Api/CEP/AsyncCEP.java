@@ -1,25 +1,19 @@
-package com.example.appcompanypets.Api;
+package com.example.appcompanypets.Api.CEP;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
-import androidx.fragment.app.FragmentActivity;
-
 import com.example.appcompanypets.Api.JsonHandler;
 import com.google.android.material.textfield.TextInputEditText;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Async extends AsyncTask {
+public class AsyncCEP extends AsyncTask {
 
     TextInputEditText editTextLogradouro, editTextBairro,
             editTextCidade, editTextUF;
     String cep;
 
-    public Async(TextInputEditText editTextLogradouro, TextInputEditText editTextBairro, TextInputEditText editTextCidade, TextInputEditText editTextUF, String cep)
+    public AsyncCEP(TextInputEditText editTextLogradouro, TextInputEditText editTextBairro, TextInputEditText editTextCidade, TextInputEditText editTextUF, String cep)
     {
         this.editTextLogradouro = editTextLogradouro;
         this.editTextBairro = editTextBairro;

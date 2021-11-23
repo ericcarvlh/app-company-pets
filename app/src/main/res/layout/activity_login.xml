@@ -14,7 +14,7 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutUsuarioLogin"
+        android:id="@+id/textInputLayoutEmailLogin"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         app:startIconDrawable="@drawable/ic_baseline_perm_identity_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextUsuario_Login"
+            android:id="@+id/editTextEmail_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -55,7 +55,7 @@
         app:hintTextColor="#494949"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUsuarioLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmailLogin"
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText

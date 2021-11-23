@@ -15,21 +15,26 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.appcompanypets.Api.Async;
+import com.example.appcompanypets.Api.CEP.AsyncCEP;
 import com.example.appcompanypets.Dto.DtoUsuario;
 import com.example.appcompanypets.Activities.LoginActivity;
+import com.example.appcompanypets.Metodos;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.Dao.DaoUsuario;
+import com.example.appcompanypets.Retrofit.ConfigRetrofit;
 import com.google.android.material.textfield.TextInputEditText;
 
+import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class CadastroFragment3 extends Fragment
 {
+    Metodos met = new Metodos();
     private DtoUsuario dto = new DtoUsuario();
     private FragmentActivity context;
     Button buttonFinalizar;
-    TextInputEditText editTextLogradouro, editTextBairro, editTextNumero, editTextCEP, editTextUF, editTextCidade, editTextComplemento;
+    TextInputEditText editTextLogradouro, editTextBairro, editTextNumero, editTextCEP,
+            editTextUF, editTextCidade, editTextComplemento;
     Retrofit retrofit;
     DaoUsuario dao;
 
@@ -83,7 +88,7 @@ public class CadastroFragment3 extends Fragment
                 dto.setCEP(editTextCEP.getText().toString());
                 if(dto.getCEP().length()==8)
                 {
-                    Async async = new Async(editTextLogradouro, editTextBairro, editTextCidade, editTextUF, dto.getCEP());
+                    AsyncCEP async = new AsyncCEP(editTextLogradouro, editTextBairro, editTextCidade, editTextUF, dto.getCEP());
                     async.execute();
                 }
             }
@@ -124,36 +129,15 @@ public class CadastroFragment3 extends Fragment
         return view;
     }
 
-//    private void cadastrarUsuario(DtoUsuario dto)
-//    {
-//        retrofit = ConfigRetrofit.getRetrofit();
-//
-//        dao = retrofit.create(DaoUsuario.class);
-//
-//        Call<Boolean> call =  dao.cadastrar(dto);
-//
-//        call.enqueue(new Callback<Boolean>()
-//        {
-//            @Override
-//            public void onResponse(Call<Boolean> call, Response<Boolean> response)
-//            {
-//                if(response.isSuccessful())
-//                {
-//                    Toast.makeText(getActivity(), "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(context, LoginActivity.class);
-//                    startActivity(intent);
-//                }
-//                else{
-//                    Toast.makeText(getActivity(), "Erro ao cadastrar: " + response.toString(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Boolean> call, Throwable throwable)
-//            {
-//                Toast.makeText(getActivity(), "Erro desconhecido: "  + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-//                Log.e("json", throwable.getMessage());
-//            }
-//        });
-//    }
+    private void cadastrarUsuario()
+    {
+        retrofit = ConfigRetrofit.getRetrofit();
+
+        dao = retrofit.create(DaoUsuario.class);
+
+        Call<Boolean> call =  dao.cadastrar();
+
+        met.retrofitProcedimento(call, "Sucesso ao cadastrar", "Erro ao cadastrar: ",
+                "Erro: ", context, LoginActivity.class);
+    }
 }

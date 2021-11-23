@@ -10,21 +10,21 @@ public interface DaoUsuario
     @FormUrlEncoded
     @POST("cadastrarUsuario.php")
     Call<Boolean> cadastrar(
-            @Field("") String nome,
-            @Field("") String siglaSexo,
-            @Field("") String telefone,
-            @Field("") String celular,
-            @Field("") String CPF,
-            @Field("") String CEP,
-            @Field("") String UFEstado,
-            @Field("") String cidade,
-            @Field("") String email,
-            @Field("") String senha,
-            @Field("") String numero,
-            @Field("") String logradouro,
-            @Field("") String dataNascimento,
-            @Field("") String bairro,
-            @Field("") String complemento
+//            @Field("") String nome,
+//            @Field("") String siglaSexo,
+//            @Field("") String telefone,
+//            @Field("") String celular,
+//            @Field("") String CPF,
+//            @Field("") String CEP,
+//            @Field("") String UFEstado,
+//            @Field("") String cidade,
+//            @Field("") String email,
+//            @Field("") String senha,
+//            @Field("") String numero,
+//            @Field("") String logradouro,
+//            @Field("") String dataNascimento,
+//            @Field("") String bairro,
+//            @Field("") String complemento
     );
 
 }
