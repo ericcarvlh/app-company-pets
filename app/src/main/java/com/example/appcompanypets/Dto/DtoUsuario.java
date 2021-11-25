@@ -2,139 +2,157 @@ package com.example.appcompanypets.Dto;
 
 public class DtoUsuario
 {
-    private String siglaSexo;
-    private String nome;
-    private String telefone;
-    private String celular;
-    private String CPF;
-    private String CEP;
-    private String UFEstado;
-    private String cidade;
-    private String email;
-    private String senha;
-    private String numero;
-    private String logradouro;
-    private String bairro;
-    private String dataNascimento;
-    private String complemento;
+    private int cd_Usuario;
+    private String ds_Tipo;
+    private String sg_Sexo;
+    private String nm_Usuario;
+    private String no_Telefone;
+    private String no_Celular;
+    private String no_CPF;
+    private String no_CEP;
+    private String no_UF;
+    private String nm_Cidade;
+    private String ds_Email;
+    private String ds_Senha;
+    private String no_Logradouro;
+    private String nm_Logradouro;
+    private String nm_Bairro;
+    private String dt_Nascimento;
+    private String ds_Complemento;
 
-    public String getComplemento() {
-        return complemento;
+    public int getCd_Usuario() {
+        return cd_Usuario;
     }
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setCd_Usuario(int cd_Usuario) {
+        this.cd_Usuario = cd_Usuario;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
+    public String getDs_Tipo() {
+        return ds_Tipo;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDs_Tipo(String ds_Tipo) {
+        this.ds_Tipo = ds_Tipo;
     }
 
-    public String getSiglaSexo() {
-        return siglaSexo;
+    public String getDs_Complemento() {
+        return ds_Complemento;
     }
 
-    public void setSiglaSexo(String siglaSexo) {
-        this.siglaSexo = siglaSexo;
+    public void setDs_Complemento(String ds_Complemento) {
+        this.ds_Complemento = ds_Complemento;
     }
 
-    public String getNome() {
-        return nome;
+    public String getDt_Nascimento() {
+        return dt_Nascimento;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDt_Nascimento(String dt_Nascimento) {
+        this.dt_Nascimento = dt_Nascimento;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getSg_Sexo() {
+        return sg_Sexo;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setSg_Sexo(String sg_Sexo) {
+        this.sg_Sexo = sg_Sexo;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getNm_Usuario() {
+        return nm_Usuario;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setNm_Usuario(String nm_Usuario) {
+        this.nm_Usuario = nm_Usuario;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getNo_Telefone() {
+        return no_Telefone;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setNo_Telefone(String no_Telefone) {
+        this.no_Telefone = no_Telefone;
     }
 
-    public String getCEP() {
-        return CEP;
+    public String getNo_Celular() {
+        return no_Celular;
     }
 
-    public void setCEP(String CEP) {
-        this.CEP = CEP;
+    public void setNo_Celular(String no_Celular) {
+        this.no_Celular = no_Celular;
     }
 
-    public String getUFEstado() {
-        return UFEstado;
+    public String getNo_CPF() {
+        return no_CPF;
     }
 
-    public void setUFEstado(String UFEstado) {
-        this.UFEstado = UFEstado;
+    public void setNo_CPF(String no_CPF) {
+        this.no_CPF = no_CPF;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getNo_CEP() {
+        return no_CEP;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setNo_CEP(String no_CEP) {
+        this.no_CEP = no_CEP;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNo_UF() {
+        return no_UF;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNo_UF(String no_UF) {
+        this.no_UF = no_UF;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getNm_Cidade() {
+        return nm_Cidade;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setNm_Cidade(String nm_Cidade) {
+        this.nm_Cidade = nm_Cidade;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getDs_Email() {
+        return ds_Email;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setDs_Email(String ds_Email) {
+        this.ds_Email = ds_Email;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getDs_Senha() {
+        return ds_Senha;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setDs_Senha(String ds_Senha) {
+        this.ds_Senha = ds_Senha;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getNo_Logradouro() {
+        return no_Logradouro;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setNo_Logradouro(String no_Logradouro) {
+        this.no_Logradouro = no_Logradouro;
+    }
+
+    public String getNm_Logradouro() {
+        return nm_Logradouro;
+    }
+
+    public void setNm_Logradouro(String nm_Logradouro) {
+        this.nm_Logradouro = nm_Logradouro;
+    }
+
+    public String getNm_Bairro() {
+        return nm_Bairro;
+    }
+
+    public void setNm_Bairro(String nm_Bairro) {
+        this.nm_Bairro = nm_Bairro;
     }
 }

@@ -21,7 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CadastroFragment2 extends Fragment
 {
-    private DtoUsuario dto = new DtoUsuario();
+    private DtoUsuario dto;
     private FragmentActivity context;
     Button buttonAvancar;
     TextInputEditText editTextEmail, editTextSenha;
@@ -60,25 +60,25 @@ public class CadastroFragment2 extends Fragment
             @Override
             public void onClick(View v)
             {
-                dto.setEmail(editTextEmail.getText().toString());
-                dto.setSenha(editTextSenha.getText().toString());
+                dto.setDs_Email(editTextEmail.getText().toString());
+                dto.setDs_Senha(editTextSenha.getText().toString());
 
-                if(dto.getEmail().equals("") || dto.getEmail().length()<6)
-                    Toast.makeText(getActivity(), "É obrigatório informar o email, com no máximo 60 caracteres", Toast.LENGTH_SHORT).show();
-                else if(dto.getSenha().equals("") || dto.getSenha().length()<10)
-                    Toast.makeText(getActivity(), "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 caracteres.", Toast.LENGTH_SHORT).show();
-                else{
-                    try {
+//                if(dto.getDs_Email().equals("") || dto.getDs_Email().length()<6)
+//                    Toast.makeText(getActivity(), "É obrigatório informar o email, com no máximo 60 caracteres", Toast.LENGTH_SHORT).show();
+//                else if(dto.getDs_Senha().equals("") || dto.getDs_Senha().length()<10)
+//                    Toast.makeText(getActivity(), "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 caracteres.", Toast.LENGTH_SHORT).show();
+//                else{
+//                    try {
                         CadastroFragment3 fragment = new CadastroFragment3(dto);
                         FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frameLayoutConteudoCadastro, fragment);
                         transaction.commit();
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                        Log.d("ExNoCadastro2", e.toString());
-                    }
-                }
+//                    }
+//                    catch (Exception e) {
+//                        e.printStackTrace();
+//                        Log.d("ExNoCadastro2", e.toString());
+//                    }
+//                }
             }
         });
 

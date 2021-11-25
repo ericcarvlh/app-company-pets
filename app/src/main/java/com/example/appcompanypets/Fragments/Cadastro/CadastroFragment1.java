@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import com.example.appcompanypets.Dto.DtoUsuario;
 import com.example.appcompanypets.Fragments.CadastroFragment2;
-import com.example.appcompanypets.Metodos;
 import com.example.appcompanypets.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -77,7 +76,7 @@ public class CadastroFragment1 extends Fragment
                         idadeUsuario = Calendar.getInstance().get(Calendar.YEAR) - year ;
                         month = month+1;
                         String dataNascDemonstrativa = day+"/"+month+"/"+year;
-                        dto.setDataNascimento(year+"-"+month+"-"+day);
+                        dto.setDt_Nascimento(year+"-"+month+"-"+day);
                         editTextDataNascimento.setText(dataNascDemonstrativa);
                     }
                 }, ano, mes, dia);
@@ -97,16 +96,16 @@ public class CadastroFragment1 extends Fragment
                 switch (position)
                 {
                     case 0:
-                        dto.setSiglaSexo("");
+                        dto.setSg_Sexo("");
                         break;
                     case 1:
-                        dto.setSiglaSexo("M");
+                        dto.setSg_Sexo("M");
                         break;
                     case 2:
-                        dto.setSiglaSexo("F");
+                        dto.setSg_Sexo("F");
                         break;
                     case 3:
-                        dto.setSiglaSexo("P");
+                        dto.setSg_Sexo("P");
                         break;
                 }
             }
@@ -123,37 +122,37 @@ public class CadastroFragment1 extends Fragment
             @Override
             public void onClick(View v)
             {
-                dto.setNome(editTextNome.getText().toString());
-                dto.setTelefone(editTextTelefone.getText().toString());
-                dto.setCelular(editTextCelular.getText().toString());
-                dto.setCPF(editTextCPF.getText().toString());
+                dto.setNm_Usuario(editTextNome.getText().toString());
+                dto.setNo_Telefone(editTextTelefone.getText().toString());
+                dto.setNo_Celular(editTextCelular.getText().toString());
+                dto.setNo_CPF(editTextCPF.getText().toString());
 
-                if(dto.getNome().equals(""))
-                Toast.makeText(getActivity(), "É obrigatório informar o nome.", Toast.LENGTH_SHORT).show();
-                else if(dto.getDataNascimento().equals(""))
-                    Toast.makeText(getActivity(), "É obrigatório informar a data de nascimento.", Toast.LENGTH_SHORT).show();
-                else if(idadeUsuario < 18 )
-                    Toast.makeText(getActivity(), "Você precisa ter no mínimo 18 anos para prosseguir.", Toast.LENGTH_SHORT).show();
-                else if(dto.getCPF().equals("") || dto.getCPF().length()<11)
-                    Toast.makeText(getActivity(), "É obrigatório informar o CPF, mínimo de 11 e maxímo de 11 digitos.", Toast.LENGTH_SHORT).show();
-                else if(dto.getSiglaSexo().equals(""))
-                    Toast.makeText(getActivity(), "É obrigatório selecionar um sexo.", Toast.LENGTH_SHORT).show();
-                else if(dto.getTelefone().equals("") || dto.getTelefone().length()<10)
-                    Toast.makeText(getActivity(), "É obrigatório informar o número de telefone, mínimo de 10 e maxímo de 10 digitos.", Toast.LENGTH_SHORT).show();
-                else if(dto.getCelular().equals("") || dto.getCelular().length()<11)
-                    Toast.makeText(getActivity(), "É obrigatório informar o número de celular, mínimo de 11 e maxímo de 11 digitos.", Toast.LENGTH_SHORT).show();
-                else {
-                    try {
+//                if(dto.getNm_Usuario().equals(""))
+//                Toast.makeText(getActivity(), "É obrigatório informar o nome.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getDt_Nascimento().equals(""))
+//                    Toast.makeText(getActivity(), "É obrigatório informar a data de nascimento.", Toast.LENGTH_SHORT).show();
+//                else if(idadeUsuario < 18 )
+//                    Toast.makeText(getActivity(), "Você precisa ter no mínimo 18 anos para prosseguir.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNo_CPF().equals("") || dto.getNo_CPF().length()<11)
+//                    Toast.makeText(getActivity(), "É obrigatório informar o CPF, mínimo de 11 e maxímo de 11 digitos.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getSg_Sexo().equals(""))
+//                    Toast.makeText(getActivity(), "É obrigatório selecionar um sexo.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNo_Telefone().equals("") || dto.getNo_Telefone().length()<10)
+//                    Toast.makeText(getActivity(), "É obrigatório informar o número de telefone, mínimo de 10 e maxímo de 10 digitos.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNo_Celular().equals("") || dto.getNo_Celular().length()<11)
+//                    Toast.makeText(getActivity(), "É obrigatório informar o número de celular, mínimo de 11 e maxímo de 11 digitos.", Toast.LENGTH_SHORT).show();
+//                else {
+//                    try {
                         CadastroFragment2 fragment = new CadastroFragment2(dto);
                         FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frameLayoutConteudoCadastro, fragment);
                         transaction.commit();
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                        Log.d("ExNoCadastro1", e.toString());
-                    }
-                }
+//                    }
+//                    catch (Exception e) {
+//                        e.printStackTrace();
+//                        Log.d("ExNoCadastro1", e.toString());
+//                    }
+//                }
             }
         });
 

@@ -47,15 +47,15 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                dto.setEmail(editTextEmail.getText().toString());
-                dto.setSenha(editTextSenha.getText().toString());
+                dto.setDs_Email(editTextEmail.getText().toString());
+                dto.setDs_Senha(editTextSenha.getText().toString());
 
-                if(dto.getEmail().equals("") || dto.getEmail().length()<6)
+                if(dto.getDs_Email().equals("") || dto.getDs_Email().length()<6)
                     Toast.makeText(LoginActivity.this, "É obrigatório informar o email, com no máximo 60 caracteres", Toast.LENGTH_SHORT).show();
-                else if(dto.getSenha().equals("") || dto.getSenha().length()<10)
+                else if(dto.getDs_Senha().equals("") || dto.getDs_Senha().length()<10)
                     Toast.makeText(LoginActivity.this, "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 caracteres.", Toast.LENGTH_SHORT).show();
                 else {
-
+                    loginUsuario();
                 }
             }
         });
@@ -69,7 +69,6 @@ public class LoginActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
     }
 
     private void loginUsuario()
@@ -78,10 +77,10 @@ public class LoginActivity extends AppCompatActivity
 
         dao = retrofit.create(DaoUsuario.class);
 
-        Call<Boolean> call =  dao.cadastrar();
+        Call<DtoUsuario> call =  dao.Login(dto.getDs_Email(), dto.getDs_Senha());
 
-        met.retrofitProcedimento(call, "Sucesso ao cadastrar", "Erro ao cadastrar: ",
-                "Erro: ", LoginActivity.this, LoginActivity.class);
+        met.retrofitProcedimentoLogin(call, "Sucesso ao logar", "Erro ao logar: ",
+                "Erro: ", LoginActivity.this, MenuActivity.class);
     }
 
 }

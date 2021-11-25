@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.appcompanypets.Api.JsonHandler;
 import com.example.appcompanypets.Dto.DtoProduto;
+import com.example.appcompanypets.R;
 import com.example.appcompanypets.RecyclerViewAdapter;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +37,7 @@ public class AsyncProduto extends AsyncTask
         try
         {
             JSONObject jsonObject = new JSONObject(json);
-            JSONArray jsonArray = jsonObject.getJSONArray("Search");
+            JSONArray jsonArray = jsonObject.getJSONArray("Produtos");
 
             arrayListProduto = new ArrayList<>();
             for (int i = 0; i < jsonArray.length(); i++)
@@ -52,7 +53,7 @@ public class AsyncProduto extends AsyncTask
                 arrayListProduto.add(dto);
             }
 
-            recyclerViewAdapter = new RecyclerViewAdapter(arrayListProduto);
+            recyclerViewAdapter = new RecyclerViewAdapter(arrayListProduto, null, 0, R.layout.produto_adapter);
 
         } catch (JSONException | MalformedURLException e) {
             e.printStackTrace();

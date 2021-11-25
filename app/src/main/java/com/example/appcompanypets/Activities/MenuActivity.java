@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.appcompanypets.Dto.DtoUsuario;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.Slides.SlideAdapter;
 
@@ -12,6 +14,12 @@ public class MenuActivity extends AppCompatActivity
 {
     ViewPager viewPager;
     SlideAdapter slideAdapter;
+    DtoUsuario dto = new DtoUsuario();
+
+    public MenuActivity(DtoUsuario dto)
+    {
+        this.dto = dto;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +48,8 @@ public class MenuActivity extends AppCompatActivity
 
         viewPager.setAdapter(slideAdapter);
         viewPager.addOnPageChangeListener(viewListener);
+
+        Toast.makeText(MenuActivity.this, "O seu código é: " +dto.getCd_Usuario(), Toast.LENGTH_SHORT).show();
     }
 
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener()

@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +26,13 @@ import com.example.appcompanypets.Retrofit.ConfigRetrofit;
 import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class CadastroFragment3 extends Fragment
 {
-    Metodos met = new Metodos();
-    private DtoUsuario dto = new DtoUsuario();
+    private DtoUsuario dto;
     private FragmentActivity context;
     Button buttonFinalizar;
     TextInputEditText editTextLogradouro, editTextBairro, editTextNumero, editTextCEP,
@@ -85,10 +87,10 @@ public class CadastroFragment3 extends Fragment
             @Override
             public void afterTextChanged(Editable s)
             {
-                dto.setCEP(editTextCEP.getText().toString());
-                if(dto.getCEP().length()==8)
+                dto.setNo_CEP(editTextCEP.getText().toString());
+                if(dto.getNo_CEP().length()==8)
                 {
-                    AsyncCEP async = new AsyncCEP(editTextLogradouro, editTextBairro, editTextCidade, editTextUF, dto.getCEP());
+                    AsyncCEP async = new AsyncCEP(editTextLogradouro, editTextBairro, editTextCidade, editTextUF, dto.getNo_CEP());
                     async.execute();
                 }
             }
@@ -99,45 +101,67 @@ public class CadastroFragment3 extends Fragment
             @Override
             public void onClick(View v)
             {
-                dto.setUFEstado(editTextUF.getText().toString());
-                dto.setCidade(editTextCidade.getText().toString());
-                dto.setCEP(editTextCEP.getText().toString());
-                dto.setLogradouro(editTextLogradouro.getText().toString());
-                dto.setBairro(editTextBairro.getText().toString());
-                dto.setNumero(editTextNumero.getText().toString());
-                dto.setComplemento(editTextComplemento.getText().toString());
+                dto.setNo_UF(editTextUF.getText().toString());
+                dto.setNm_Cidade(editTextCidade.getText().toString());
+                dto.setNo_CEP(editTextCEP.getText().toString());
+                dto.setNm_Logradouro(editTextLogradouro.getText().toString());
+                dto.setNm_Bairro(editTextBairro.getText().toString());
+                dto.setNo_Logradouro(editTextNumero.getText().toString());
+                dto.setDs_Complemento(editTextComplemento.getText().toString());
 
-                if(dto.getUFEstado().equals("") || dto.getUFEstado().length() != 2)
-                    Toast.makeText(getActivity(), "É obrigatório informar o UF.", Toast.LENGTH_SHORT).show();
-                else if(dto.getCEP().equals("") || dto.getCEP().length()<8)
-                    Toast.makeText(getActivity(), "É obrigatório informar o CEP, mínimo de 8 e máximo de 8 digitos", Toast.LENGTH_SHORT).show();
-                else if(dto.getLogradouro().equals(""))
-                    Toast.makeText(getActivity(), "É obrigatório informar o logradouro.", Toast.LENGTH_SHORT).show();
-                else if(dto.getNumero().equals(""))
-                    Toast.makeText(getActivity(), "É obrigatório informar o numero, mínimo de 1 e máximo de 5 digitos", Toast.LENGTH_SHORT).show();
-                else if(dto.getBairro().equals(""))
-                    Toast.makeText(getActivity(), "É obrigatório informar o bairro.", Toast.LENGTH_SHORT).show();
-                else if(dto.getCidade().equals(""))
-                    Toast.makeText(getActivity(), "É obrigatório informar A cidade.", Toast.LENGTH_SHORT).show();
-                else {
-                    Intent intent = new Intent(context, LoginActivity.class);
-                    startActivity(intent);
-                }
+//                if(dto.getNo_UF().equals("") || dto.getNo_UF().length() != 2)
+//                    Toast.makeText(getActivity(), "É obrigatório informar o UF.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNo_CEP().equals("") || dto.getNo_CEP().length()<8)
+//                    Toast.makeText(getActivity(), "É obrigatório informar o CEP, mínimo de 8 e máximo de 8 digitos", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNm_Logradouro().equals(""))
+//                    Toast.makeText(getActivity(), "É obrigatório informar o logradouro.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNo_Logradouro().equals(""))
+//                    Toast.makeText(getActivity(), "É obrigatório informar o numero, mínimo de 1 e máximo de 5 digitos", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNm_Bairro().equals(""))
+//                    Toast.makeText(getActivity(), "É obrigatório informar o bairro.", Toast.LENGTH_SHORT).show();
+//                else if(dto.getNm_Cidade().equals(""))
+//                    Toast.makeText(getActivity(), "É obrigatório informar A cidade.", Toast.LENGTH_SHORT).show();
+//                else {
+                    cadastrarUsuario(dto);
+//                }
             }
         });
 
         return view;
     }
 
-    private void cadastrarUsuario()
+    private void cadastrarUsuario(DtoUsuario dto)
     {
         retrofit = ConfigRetrofit.getRetrofit();
 
         dao = retrofit.create(DaoUsuario.class);
 
-        Call<Boolean> call =  dao.cadastrar();
+        Call<Boolean> call =  dao.cadastrar(dto.getNm_Usuario(), dto.getDt_Nascimento(), dto.getDs_Senha(), dto.getSg_Sexo(), dto.getNo_CPF(),
+                dto.getDs_Email(), dto.getNo_UF(), dto.getNm_Cidade(), dto.getNm_Bairro(), dto.getNm_Logradouro(), dto.getNo_Logradouro(), dto.getNo_CEP(),
+                dto.getDs_Complemento(), dto.getNo_Telefone(), dto.getNo_Celular());
 
-        met.retrofitProcedimento(call, "Sucesso ao cadastrar", "Erro ao cadastrar: ",
-                "Erro: ", context, LoginActivity.class);
+        call.enqueue(new Callback<Boolean>()
+        {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response)
+            {
+                if(response.isSuccessful())
+                {
+                    Toast.makeText(context, "Sucesso ao cadastrar", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, LoginActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(context, "Erro ao cadastrar: " + response.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable throwable)
+            {
+                Toast.makeText(context, "Erro: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("json", throwable.getMessage());
+            }
+        });
     }
 }

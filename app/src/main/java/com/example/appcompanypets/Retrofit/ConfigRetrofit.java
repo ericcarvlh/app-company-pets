@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConfigRetrofit
 {
-    private static final String URL_PRINCIPAL = "";
+    private static final String URL_PRINCIPAL = "https://appcompanypetsapi.000webhostapp.com/";
 
     public static Retrofit retrofit;
 

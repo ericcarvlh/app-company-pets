@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.appcompanypets.Dto.DtoUsuario;
 import com.example.appcompanypets.R;
 
 import retrofit2.Call;
@@ -61,6 +62,33 @@ public class Metodos extends AppCompatActivity
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable throwable)
+            {
+                Toast.makeText(tela, falha + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("json", throwable.getMessage());
+            }
+        });
+    }
+
+    public void retrofitProcedimentoLogin(Call<DtoUsuario> call, String responstaSucesso, String responstaErro, String falha, Context tela, Class<?> telaDesejada)
+    {
+        call.enqueue(new Callback<DtoUsuario>()
+        {
+            @Override
+            public void onResponse(Call<DtoUsuario> call, Response<DtoUsuario> response)
+            {
+                if(response.isSuccessful())
+                {
+                    Toast.makeText(tela, responstaSucesso, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(tela, telaDesejada);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(tela, responstaErro + response.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DtoUsuario> call, Throwable throwable)
             {
                 Toast.makeText(tela, falha + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("json", throwable.getMessage());
