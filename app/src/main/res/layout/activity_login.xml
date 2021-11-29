@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:startIconDrawable="@drawable/ic_baseline_perm_identity_24">
+        app:startIconDrawable="@drawable/ic_baseline_perm_identity">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextEmail_Login"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmailLogin"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24">
+        app:startIconDrawable="@drawable/ic_baseline_lock">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextSenha_Login"

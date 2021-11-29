@@ -2,6 +2,7 @@ package com.example.appcompanypets;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.appcompanypets.DTO.DtoUsuario;
 import com.example.appcompanypets.ui.menu.MenuFragment;
@@ -22,15 +23,7 @@ public class MenuLateralActivity extends AppCompatActivity
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuLateralBinding binding;
     DtoUsuario dto = new DtoUsuario();
-
-    public MenuLateralActivity() {
-
-    }
-
-    public MenuLateralActivity(DtoUsuario dto)
-    {
-        this.dto = dto;
-    }
+    TextView textViewNomeUsuario, textViewEmailUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,24 +34,22 @@ public class MenuLateralActivity extends AppCompatActivity
         binding = ActivityMenuLateralBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMenuLateral.toolbar);
-        new MenuFragment(dto);
 
-        // botao flutuante
-        binding.appBarMenuLateral.fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        Bundle puxar = getIntent().getExtras();
+        dto.setCd_Usuario(puxar.getInt("cd_usuario"));
+        dto.setNm_Usuario(puxar.getString("nm_usuario"));
+        dto.setDs_Email(puxar.getString("ds_email"));
 
         DrawerLayout drawer = binding.drawerLayout;
-
         // area de navegação
         NavigationView navigationView = binding.navView;
+
+        // pegando o header view para setar usuario e email
+        View headerView = navigationView.getHeaderView(0);
+        textViewEmailUsuario = headerView.findViewById(R.id.textViewEmailUsuario);
+        textViewNomeUsuario = headerView.findViewById(R.id.textViewNomeUsuario);
+        textViewNomeUsuario.setText(dto.getNm_Usuario());
+        textViewEmailUsuario.setText(dto.getDs_Email());
 
         // define as configurações do navigationdrawer
         mAppBarConfiguration = new AppBarConfiguration.Builder

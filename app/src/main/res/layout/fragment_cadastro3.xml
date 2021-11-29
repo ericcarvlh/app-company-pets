@@ -32,7 +32,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+            app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextCEP_Cadastro"
@@ -58,7 +58,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCEPCadastro"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+            app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextLogradouro_Cadastro"
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLogradouroCadastro"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+            app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextBairro_Cadastro"
@@ -110,7 +110,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBairroCadastro"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+            app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextNumero_Cadastro"
@@ -135,7 +135,7 @@
             app:helperText="Ex: São Paulo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroCadastro"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+            app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextCidade_Cadastro"
@@ -186,7 +186,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCidadeCadastro"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+            app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextComplemento_Cadastro"

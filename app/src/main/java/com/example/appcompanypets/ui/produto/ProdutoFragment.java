@@ -12,17 +12,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.appcompanypets.Api.Produto.AsyncProduto;
+import com.example.appcompanypets.DTO.DtoProduto;
+import com.example.appcompanypets.DTO.DtoUsuario;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.RecyclerViewClickListener;
+import com.example.appcompanypets.ui.cadastro.CadastroFragment3;
+
+import java.util.ArrayList;
 
 public class ProdutoFragment extends Fragment
 {
     private FragmentActivity context;
     RecyclerView recyclerViewProduto;
+    ArrayList<DtoProduto> arrayListProduto = new ArrayList<>();
+    RecyclerView recyclerViewFilme;
+    DtoProduto dto = new DtoProduto();
 
-    public ProdutoFragment() {
+    public ProdutoFragment()
+    {
         // Required empty public constructor
     }
 
@@ -37,7 +47,7 @@ public class ProdutoFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_cadastro1, container, false);
+        View view = inflater.inflate(R.layout.fragment_produto, container, false);
 
         recyclerViewProduto = view.findViewById(R.id.recyclerViewProduto);
 
@@ -51,12 +61,16 @@ public class ProdutoFragment extends Fragment
                 new RecyclerViewClickListener.OnItemClickListener()
                 {
                     @Override
-                    public void onItemClick(View view, int position) {
-
+                    public void onItemClick(View view, int position)
+                    {
+                        dto.setCd_Produto(arrayListProduto.get(position).getCd_Categoria());
+                        Toast.makeText(context, "produto: " + dto.getCd_Produto(), Toast.LENGTH_SHORT).show();
+                        DetalhesProdutoFragment fragment = new DetalhesProdutoFragment(dto);
                     }
 
                     @Override
-                    public void onLongItemClick(View view, int position) {
+                    public void onLongItemClick(View view, int position)
+                    {
 
                     }
 

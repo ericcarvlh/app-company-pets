@@ -45,10 +45,10 @@ public class AsyncProduto extends AsyncTask
                 DtoProduto dto = new DtoProduto();
                 dto.setNm_Produto(jsonArray.getJSONObject(i).getString("nm_Produto"));
                 dto.setVl_Produto(jsonArray.getJSONObject(i).getDouble("vl_Produto"));
-                //set image
-                URL url = new URL(jsonArray.getJSONObject(i).getString(""));
+                //convertendo e colocando a foto
+                URL url = new URL(jsonArray.getJSONObject(i).getString("ds_Foto"));
                 Bitmap imagem = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                //dto.setImagem(imagem);
+                dto.setDs_Foto(imagem);
 
                 arrayListProduto.add(dto);
             }

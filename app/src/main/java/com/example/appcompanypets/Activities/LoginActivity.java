@@ -88,11 +88,11 @@ public class LoginActivity extends AppCompatActivity
                 arrayList = response.body();
                 if(arrayList.size()!=0)
                 {
-                    dto.setCd_Usuario(arrayList.get(0).getCd_Usuario());
-
                     Intent intent = new Intent(LoginActivity.this, MenuLateralActivity.class);
+                    intent.putExtra("cd_usuario", arrayList.get(0).getCd_Usuario());
+                    intent.putExtra("nm_usuario", arrayList.get(0).getNm_Usuario());
+                    intent.putExtra("ds_email", arrayList.get(0).getDs_Email());
                     startActivity(intent);
-                    new MenuLateralActivity(dto);
                 }
                 else
                     Toast.makeText(LoginActivity.this, "Usuário ou senha incorretos.", Toast.LENGTH_SHORT).show();

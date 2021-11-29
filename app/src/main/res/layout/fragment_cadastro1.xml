@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:startIconDrawable="@drawable/ic_baseline_perm_identity_24">
+        app:startIconDrawable="@drawable/ic_baseline_perm_identity">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextNome_Cadastro"
@@ -80,7 +80,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDataNascimentoCadastro"
-        app:startIconDrawable="@drawable/ic_baseline_perm_identity_24">
+        app:startIconDrawable="@drawable/ic_baseline_perm_identity">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextCPF_Cadastro"
@@ -147,7 +147,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelefoneCadastro"
-        app:startIconDrawable="@drawable/ic_baseline_perm_identity_24">
+        app:startIconDrawable="@drawable/ic_baseline_perm_identity">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextCelular_Cadastro"

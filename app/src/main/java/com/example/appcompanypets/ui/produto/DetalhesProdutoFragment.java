@@ -8,9 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.appcompanypets.DTO.DtoProduto;
+import com.example.appcompanypets.DTO.DtoUsuario;
 import com.example.appcompanypets.R;
 
-public class DetalhesProdutoFragment extends Fragment {
+public class DetalhesProdutoFragment extends Fragment
+{
+    DtoProduto dto = new DtoProduto();
+
+
+    public DetalhesProdutoFragment(DtoProduto dto)
+    {
+        this.dto = dto;
+    }
 
     public DetalhesProdutoFragment()
     {
