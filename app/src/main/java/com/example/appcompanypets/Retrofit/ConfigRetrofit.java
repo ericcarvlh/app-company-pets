@@ -7,11 +7,11 @@ public class ConfigRetrofit
 {
     private static final String URL_PRINCIPAL = "https://appcompanypetsapi.000webhostapp.com/";
 
-    public static Retrofit retrofit;
+    private static Retrofit retrofit;
 
     public static Retrofit getRetrofit()
     {
-        if(retrofit!=null)
+        if(retrofit==null)
         {
             retrofit = new Retrofit.Builder()
                     .baseUrl(URL_PRINCIPAL)

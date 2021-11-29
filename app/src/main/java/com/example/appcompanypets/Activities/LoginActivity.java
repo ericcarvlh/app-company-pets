@@ -4,30 +4,34 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appcompanypets.Dao.DaoUsuario;
-import com.example.appcompanypets.Dto.DtoUsuario;
-import com.example.appcompanypets.Metodos;
+import com.example.appcompanypets.DAO.DaoLogin;
+import com.example.appcompanypets.DTO.DtoUsuario;
+import com.example.appcompanypets.MenuLateralActivity;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.Retrofit.ConfigRetrofit;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity
 {
-    Metodos met = new Metodos();
     TextView textViewCadastro;
     Button buttonEntrar;
     EditText editTextEmail, editTextSenha;
-    Retrofit retrofit;
-    DaoUsuario dao;
     DtoUsuario dto = new DtoUsuario();
+    ArrayList<DtoUsuario> arrayList = new ArrayList<DtoUsuario>();
+    Retrofit retrofit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,7 +59,7 @@ public class LoginActivity extends AppCompatActivity
                 else if(dto.getDs_Senha().equals("") || dto.getDs_Senha().length()<10)
                     Toast.makeText(LoginActivity.this, "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 caracteres.", Toast.LENGTH_SHORT).show();
                 else {
-                    loginUsuario();
+                    consultaLogin(dto.getDs_Email(), dto.getDs_Senha());
                 }
             }
         });
@@ -71,16 +75,38 @@ public class LoginActivity extends AppCompatActivity
         });
     }
 
-    private void loginUsuario()
+    private void consultaLogin(String email, String senha)
     {
         retrofit = ConfigRetrofit.getRetrofit();
+        DaoLogin dao = retrofit.create(DaoLogin.class);
+        Call<ArrayList<DtoUsuario>> call = dao.loginUsuario(email, senha);
+        call.enqueue(new Callback<ArrayList<DtoUsuario>>()
+        {
+            @Override
+            public void onResponse(Call<ArrayList<DtoUsuario>> call, Response<ArrayList<DtoUsuario>> response)
+            {
+                arrayList = response.body();
+                if(arrayList.size()!=0)
+                {
+                    dto.setCd_Usuario(arrayList.get(0).getCd_Usuario());
 
-        dao = retrofit.create(DaoUsuario.class);
+                    Intent intent = new Intent(LoginActivity.this, MenuLateralActivity.class);
+                    startActivity(intent);
+                    new MenuLateralActivity(dto);
+                }
+                else
+                    Toast.makeText(LoginActivity.this, "Usuário ou senha incorretos.", Toast.LENGTH_SHORT).show();
+                // aqui podemos contabilizar as tentativas feitas, sendo assim p
+                // reduzir as chances de ataque por força bruta
+            }
 
-        Call<DtoUsuario> call =  dao.Login(dto.getDs_Email(), dto.getDs_Senha());
-
-        met.retrofitProcedimentoLogin(call, "Sucesso ao logar", "Erro ao logar: ",
-                "Erro: ", LoginActivity.this, MenuActivity.class);
+            @Override
+            public void onFailure(Call<ArrayList<DtoUsuario>> call, Throwable throwable)
+            {
+                Toast.makeText(LoginActivity.this, "Erro: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("LoginCallBooljsom", throwable.toString());
+            }
+        });
     }
 
 }

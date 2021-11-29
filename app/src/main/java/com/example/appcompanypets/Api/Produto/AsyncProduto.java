@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.appcompanypets.Api.JsonHandler;
-import com.example.appcompanypets.Dto.DtoProduto;
+import com.example.appcompanypets.DTO.DtoProduto;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.RecyclerViewAdapter;
 import org.json.JSONArray;
@@ -43,8 +43,8 @@ public class AsyncProduto extends AsyncTask
             for (int i = 0; i < jsonArray.length(); i++)
             {
                 DtoProduto dto = new DtoProduto();
-                //dto.setTitulo(jsonArray.getJSONObject(i).getString(""));
-                //dto.setAno(jsonArray.getJSONObject(i).getString(""));
+                dto.setNm_Produto(jsonArray.getJSONObject(i).getString("nm_Produto"));
+                dto.setVl_Produto(jsonArray.getJSONObject(i).getDouble("vl_Produto"));
                 //set image
                 URL url = new URL(jsonArray.getJSONObject(i).getString(""));
                 Bitmap imagem = BitmapFactory.decodeStream(url.openConnection().getInputStream());

@@ -13,8 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.appcompanypets.Dto.DtoUsuario;
-import com.example.appcompanypets.R;
+import com.example.appcompanypets.DTO.DtoUsuario;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +21,8 @@ import retrofit2.Response;
 
 public class Metodos extends AppCompatActivity
 {
+    Intent intent;
+
     public void transicaoFragment(Fragment fragment, Bundle args, FragmentActivity context, int layout)
     {
         fragment.setArguments(args);
@@ -52,7 +53,7 @@ public class Metodos extends AppCompatActivity
                 if(response.isSuccessful())
                 {
                     Toast.makeText(tela, responstaSucesso, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(tela, telaDesejada);
+                    intent = new Intent(tela, telaDesejada);
                     startActivity(intent);
                 }
                 else{

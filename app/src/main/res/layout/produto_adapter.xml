@@ -31,6 +31,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Produto"
+            app:layout_constraintBottom_toTopOf="@+id/textViewPreco"
             app:layout_constraintStart_toEndOf="@+id/imageViewProduto"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,25 +45,25 @@
             app:layout_constraintStart_toEndOf="@+id/imageViewProduto"
             app:layout_constraintTop_toBottomOf="@+id/textViewNomeProduto" />
 
-        <TextView
-            android:id="@+id/textViewIdadeRecomendada"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Idade"
-            app:layout_constraintStart_toEndOf="@+id/textViewNomeProduto"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/textViewIdadeRecomendada"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Idade"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/textViewNomeProduto"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/textViewMarca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
             android:text="Marca"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewPreco"
-            app:layout_constraintTop_toBottomOf="@+id/textViewIdadeRecomendada" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

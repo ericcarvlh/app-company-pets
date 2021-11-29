@@ -25,4 +25,17 @@
         <item>Personalizado</item>
     </string-array>
 
+    <string name="title_activity_menu_lateral">MenuLateralActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_sair">Sair</string>
+
+    <string name="menu_inicio">Início</string>
+    <string name="menu_produtos">Produtos</string>
+    <string name="menu_mapa_da_loja">Mapa da loja</string>
+    <string name="menu_carrinho">Carrinho</string>
+
 </resources>

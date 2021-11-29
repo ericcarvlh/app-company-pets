@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.appcompanypets.R;
-import com.example.appcompanypets.Slides.SlideAdapter;
+import com.example.appcompanypets.Slide.SlideAdapter;
 
 public class BoasVindasActivity extends AppCompatActivity
 {

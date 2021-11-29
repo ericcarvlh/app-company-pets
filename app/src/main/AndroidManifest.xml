@@ -11,12 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompanyPets">
-        <activity android:name=".Activities.DetalhesProdutoActivity"></activity>
-        <activity android:name=".Activities.MapaLojaActivity" />
-        <activity android:name=".Activities.CompraActivity" />
-        <activity android:name=".Activities.CarrinhoActivity" />
-        <activity android:name=".Activities.ProdutosActivity" />
-        <activity android:name=".Activities.MenuActivity" />
+        <activity
+            android:name=".MenuLateralActivity"
+            android:label="@string/title_activity_menu_lateral"
+            android:theme="@style/Theme.AppCompanyPets.NoActionBar"></activity>
         <activity android:name=".Activities.CadastroActivity" />
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.BoasVindasActivity">

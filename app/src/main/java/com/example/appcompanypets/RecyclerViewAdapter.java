@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appcompanypets.Dto.DtoCarrinho;
-import com.example.appcompanypets.Dto.DtoProduto;
+import com.example.appcompanypets.DTO.DtoCarrinho;
+import com.example.appcompanypets.DTO.DtoProduto;
 
 import java.util.ArrayList;
 
@@ -45,7 +45,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //arrayListProduto.get(position).getImagem()
             recyclerViewAdapterHolder.imageViewProduto.setImageBitmap(null);
             recyclerViewAdapterHolder.textViewNomeProduto.setText(null);
-            recyclerViewAdapterHolder.textViewIdadeRecomendada.setText(null);
             recyclerViewAdapterHolder.textViewPreco.setText(null);
             recyclerViewAdapterHolder.textViewMarca.setText(null);
         }
@@ -60,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder
     {
         ImageView imageViewProduto;
-        TextView textViewNomeProduto, textViewIdadeRecomendada, textViewPreco, textViewMarca;
+        TextView textViewNomeProduto, textViewPreco, textViewMarca;
         public RecyclerViewAdapterHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -69,7 +68,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             {
                 imageViewProduto = itemView.findViewById(R.id.imageViewProduto);
                 textViewNomeProduto = itemView.findViewById(R.id.textViewNomeProduto);
-                textViewIdadeRecomendada = itemView.findViewById(R.id.textViewIdadeRecomendada);
                 textViewPreco = itemView.findViewById(R.id.textViewPreco);
                 textViewMarca = itemView.findViewById(R.id.textViewMarca);
             }

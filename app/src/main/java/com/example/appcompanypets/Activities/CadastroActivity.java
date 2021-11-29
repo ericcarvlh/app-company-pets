@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
-import com.example.appcompanypets.Fragments.Cadastro.CadastroFragment1;
+import com.example.appcompanypets.ui.cadastro.CadastroFragment1;
 import com.example.appcompanypets.R;
 
 public class CadastroActivity extends AppCompatActivity
