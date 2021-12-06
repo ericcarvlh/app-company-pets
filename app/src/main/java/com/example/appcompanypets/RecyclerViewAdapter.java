@@ -3,6 +3,8 @@ package com.example.appcompanypets;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,20 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appcompanypets.DTO.DtoCarrinho;
 import com.example.appcompanypets.DTO.DtoProduto;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewAdapterHolder>
 {
     ArrayList<DtoProduto> arrayListProduto;
-    ArrayList<DtoCarrinho> arrayListCarrinho;
     int procedimento, adapterLayout;
 
-
-    public RecyclerViewAdapter(ArrayList<DtoProduto> arrayListProduto, ArrayList<DtoCarrinho> arrayListCarrinho, int procedimento, int adapterLayout)
+    public RecyclerViewAdapter(ArrayList<DtoProduto> arrayListProduto, int procedimento, int adapterLayout)
     {
         this.arrayListProduto = arrayListProduto;
-        this.arrayListCarrinho = arrayListCarrinho;
         this.procedimento = procedimento;
         this.adapterLayout = adapterLayout;
     }
@@ -42,11 +42,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         if(procedimento==0)
         {
-            //arrayListProduto.get(position).getImagem()
-            recyclerViewAdapterHolder.imageViewProduto.setImageBitmap(null);
-            recyclerViewAdapterHolder.textViewNomeProduto.setText(null);
-            recyclerViewAdapterHolder.textViewPreco.setText(null);
-            recyclerViewAdapterHolder.textViewMarca.setText(null);
+            Picasso.get().load(arrayListProduto.get(position).getDs_Foto()).into(recyclerViewAdapterHolder.imageViewProduto);
+            recyclerViewAdapterHolder.textViewNomeProduto.setText(arrayListProduto.get(position).getNm_Produto());
+            recyclerViewAdapterHolder.textViewPreco.setText(String.valueOf(arrayListProduto.get(position).getVl_Produto()));
+            recyclerViewAdapterHolder.textViewMarca.setText(arrayListProduto.get(position).getNm_Marca());
+        }
+        else if(procedimento==1)
+        {
+            Picasso.get().load(arrayListProduto.get(position).getDs_Foto()).into(recyclerViewAdapterHolder.imageViewProduto);
+            recyclerViewAdapterHolder.textViewNomeProduto.setText(arrayListProduto.get(position).getNm_Produto());
+            recyclerViewAdapterHolder.textViewPreco.setText(String.valueOf(arrayListProduto.get(position).getVl_Produto()));
+            recyclerViewAdapterHolder.textViewMarca.setText(arrayListProduto.get(position).getNm_Marca());
+            //recyclerViewAdapterHolder.editTextQuantidade.setText(arrayListProduto.get(position).getQt_Produto());
+        }
+        else if(procedimento==2)
+        {
+            Picasso.get().load(arrayListProduto.get(position).getDs_Foto()).into(recyclerViewAdapterHolder.imageViewProduto);
+            recyclerViewAdapterHolder.textViewNomeProduto.setText(arrayListProduto.get(position).getNm_Produto());
+            recyclerViewAdapterHolder.textViewPreco.setText(String.valueOf(arrayListProduto.get(position).getVl_Produto()));
+            recyclerViewAdapterHolder.textViewMarca.setText(arrayListProduto.get(position).getNm_Marca());
+            recyclerViewAdapterHolder.textViewQuantidade.setText(arrayListProduto.get(position).getNm_Marca());
         }
     }
 
@@ -59,7 +74,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder
     {
         ImageView imageViewProduto;
-        TextView textViewNomeProduto, textViewPreco, textViewMarca;
+        EditText editTextQuantidade;
+        TextView textViewNomeProduto, textViewPreco, textViewMarca, textViewQuantidade;
         public RecyclerViewAdapterHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -70,6 +86,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 textViewNomeProduto = itemView.findViewById(R.id.textViewNomeProduto);
                 textViewPreco = itemView.findViewById(R.id.textViewPreco);
                 textViewMarca = itemView.findViewById(R.id.textViewMarca);
+            }
+            else if(procedimento==1)
+            {
+                imageViewProduto = itemView.findViewById(R.id.imageViewProduto);
+                textViewNomeProduto = itemView.findViewById(R.id.textViewNomeProduto);
+                textViewPreco = itemView.findViewById(R.id.textViewPreco);
+                textViewMarca = itemView.findViewById(R.id.textViewMarca);
+                editTextQuantidade = itemView.findViewById(R.id.editTextQuantidade);
+            }
+            else if(procedimento==2)
+            {
+                imageViewProduto = itemView.findViewById(R.id.imageViewProduto);
+                textViewNomeProduto = itemView.findViewById(R.id.textViewNomeProduto);
+                textViewPreco = itemView.findViewById(R.id.textViewPreco);
+                textViewMarca = itemView.findViewById(R.id.textViewMarca);
+                textViewQuantidade = itemView.findViewById(R.id.textViewQuantidade);
             }
         }
     }

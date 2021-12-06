@@ -7,4 +7,5 @@
     <color name="s_dark">#4ba3c7</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fundo_telas">#F3F3F3F3</color>
 </resources>

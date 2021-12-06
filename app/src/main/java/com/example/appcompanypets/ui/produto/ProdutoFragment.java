@@ -1,6 +1,7 @@
 package com.example.appcompanypets.ui.produto;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,28 +13,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
+import com.example.appcompanypets.Activities.DetalhesProdutoActivity;
 import com.example.appcompanypets.Api.Produto.AsyncProduto;
 import com.example.appcompanypets.DTO.DtoProduto;
-import com.example.appcompanypets.DTO.DtoUsuario;
 import com.example.appcompanypets.R;
-import com.example.appcompanypets.RecyclerViewClickListener;
-import com.example.appcompanypets.ui.cadastro.CadastroFragment3;
+import com.example.appcompanypets.RecyclerItemClickListener;
+import com.example.appcompanypets.RecyclerViewAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ProdutoFragment extends Fragment
+public class ProdutoFragment extends Fragment implements Serializable
 {
     private FragmentActivity context;
     RecyclerView recyclerViewProduto;
-    ArrayList<DtoProduto> arrayListProduto = new ArrayList<>();
-    RecyclerView recyclerViewFilme;
+    static ArrayList<DtoProduto> arrayListProduto = new ArrayList<>();
     DtoProduto dto = new DtoProduto();
 
     public ProdutoFragment()
     {
         // Required empty public constructor
+    }
+
+    public ProdutoFragment(ArrayList<DtoProduto> arrayListProduto)
+    {
+        this.arrayListProduto = arrayListProduto;
     }
 
     @Override
@@ -54,18 +59,27 @@ public class ProdutoFragment extends Fragment
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerViewProduto.setLayoutManager(layoutManager);
 
-        AsyncProduto asyncProduto = new AsyncProduto(recyclerViewProduto, ".JPEG");
+        AsyncProduto asyncProduto = new AsyncProduto(recyclerViewProduto);
         asyncProduto.execute();
 
-        recyclerViewProduto.addOnItemTouchListener(new RecyclerViewClickListener(context, recyclerViewProduto,
-                new RecyclerViewClickListener.OnItemClickListener()
+        recyclerViewProduto.addOnItemTouchListener(new RecyclerItemClickListener(context, recyclerViewProduto,
+                new RecyclerItemClickListener.OnItemClickListener()
                 {
                     @Override
                     public void onItemClick(View view, int position)
                     {
-                        dto.setCd_Produto(arrayListProduto.get(position).getCd_Categoria());
-                        Toast.makeText(context, "produto: " + dto.getCd_Produto(), Toast.LENGTH_SHORT).show();
-                        DetalhesProdutoFragment fragment = new DetalhesProdutoFragment(dto);
+                        dto.setCd_Produto(arrayListProduto.get(position).getCd_Produto());
+                        dto.setCd_Categoria(arrayListProduto.get(position).getCd_Categoria());
+                        dto.setDs_Produto(arrayListProduto.get(position).getDs_Produto());
+                        dto.setNm_Marca(arrayListProduto.get(position).getNm_Marca());
+                        dto.setVl_Produto(arrayListProduto.get(position).getVl_Produto());
+                        dto.setNm_Produto(arrayListProduto.get(position).getNm_Produto());
+                        dto.setQt_Estoque(arrayListProduto.get(position).getQt_Estoque());
+                        dto.setDs_Foto(arrayListProduto.get(position).getDs_Foto());
+
+                        Intent intent = new Intent(context, DetalhesProdutoActivity.class);
+                        intent.putExtra("dto", dto);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -75,7 +89,8 @@ public class ProdutoFragment extends Fragment
                     }
 
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                    {
 
                     }
                 }));

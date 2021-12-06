@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.cadastro.CadastroFragment3">
+    tools:context=".Fragments.delivery.DeliveryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.10" />
+            app:layout_constraintGuide_percent="0.09" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutCEPDelivery"
@@ -97,17 +97,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutNumeroDelivery"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="50dp"
             android:hint="Número"
             app:boxBackgroundColor="#FFFFFF"
             app:boxStrokeColor="#4BB4FF"
             app:counterMaxLength="5"
             app:helperText="Ex: 678"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBairroDelivery"
             app:startIconDrawable="@drawable/ic_baseline_location_city">
@@ -116,9 +114,9 @@
                 android:id="@+id/editTextNumero_Delivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:numeric="integer"
                 android:inputType="text"
-                android:maxLength="6" />
+                android:maxLength="6"
+                android:numeric="integer" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -173,19 +171,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutComplementoDelivery"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="50dp"
             android:hint="Complemento"
             app:boxBackgroundColor="#FFFFFF"
             app:boxStrokeColor="#4BB4FF"
             app:counterMaxLength="60"
-            app:helperText="Ex: Apartamento, bloco 1"
+            app:helperText="Ex: casa"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroCartaoCredito"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBairroDelivery"
             app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -196,31 +192,18 @@
                 android:maxLength="256" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="50dp"
-            android:text="Ao cadastrar-se você concorda com os TERMOS e CONDIÇÕES"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutComplementoDelivery" />
-
         <Button
             android:id="@+id/buttonContinuar_Delivery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/button_custom"
-            android:text="Finalizar"
+            android:text="Continuar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroCartaoCredito" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.example.appcompanypets.ui.cadastro;
+package com.example.appcompanypets.Fragments.cadastro;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -28,7 +28,7 @@ import java.util.Calendar;
 public class CadastroFragment1 extends Fragment
 {
     private DtoUsuario dto = new DtoUsuario();
-    private FragmentActivity context;
+    FragmentActivity context;
     Spinner spinner_sexo;
     Button buttonAvancar;
     TextInputEditText editTextNome, editTextTelefone, editTextCelular,
@@ -60,7 +60,7 @@ public class CadastroFragment1 extends Fragment
         editTextCPF = view.findViewById(R.id.editTextCPF_Cadastro);
         editTextCelular = view.findViewById(R.id.editTextCelular_Cadastro);
         editTextTelefone = view.findViewById(R.id.editTextTelefone_Cadastro);
-        spinner_sexo = view.findViewById(R.id.spinnerSexo_Cadastro);
+        spinner_sexo = view.findViewById(R.id.spinnerParcela_CartaoCredito);
 
         editTextDataNascimento.setOnClickListener(new View.OnClickListener()
         {
@@ -103,9 +103,9 @@ public class CadastroFragment1 extends Fragment
                     case 2:
                         dto.setSg_Sexo("F");
                         break;
-                    case 3:
-                        dto.setSg_Sexo("P");
-                        break;
+//                    case 3:
+//                        dto.setSg_Sexo("P");
+//                        break;
                 }
             }
 

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.formaPagamento.CartaoDebitoFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutNomeImpressoCartaoCredito"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:hint="Nome impresso"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeColor="#4BB4FF"
+        app:counterMaxLength="60"
+        app:helperText="Ex: 1234567890"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_baseline_location_city">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNomeImpresso_CartaoDebito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="61" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutNumeroCartaoCredito"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:hint="Número"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeColor="#4BB4FF"
+        app:counterMaxLength="60"
+        app:helperText="Ex: 1234567890"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeImpressoCartaoCredito"
+        app:startIconDrawable="@drawable/ic_baseline_location_city">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNumero_CartaoDebito"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="61" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCVVCartaoCredito"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:enabled="true"
+        android:hint="CVV"
+        android:visibility="visible"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeColor="#4BB4FF"
+        app:counterMaxLength="10"
+        app:helperText="Ex: 124"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeImpressoCartaoCredito">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCVV_CartaoCredito"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="10" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutMesValidadeCartaoCredito"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:hint="Mes validade"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeColor="#4BB4FF"
+        app:counterMaxLength="60"
+        app:helperText="Ex: 1234567890"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroCartaoCredito"
+        app:startIconDrawable="@drawable/ic_baseline_location_city">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextMesValidade_CartaoCredito"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="61" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputAnoValidadeCartaoCredito"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:enabled="true"
+        android:hint="Ano validade"
+        android:visibility="visible"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeColor="#4BB4FF"
+        app:counterMaxLength="10"
+        app:helperText="Ex: 124"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCVVCartaoCredito">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextAnoValidade_CartaoDebito"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="10" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonAvancar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_custom"
+        android:text="Continuar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

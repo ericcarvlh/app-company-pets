@@ -1,10 +1,11 @@
-package com.example.appcompanypets;
+package com.example.appcompanypets.Activities;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.appcompanypets.DTO.DtoUsuario;
+import com.example.appcompanypets.R;
 import com.example.appcompanypets.ui.menu.MenuFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -30,15 +31,16 @@ public class MenuLateralActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
-        // condifura a tool bar
+        // configura a tool bar
         binding = ActivityMenuLateralBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMenuLateral.toolbar);
 
         Bundle puxar = getIntent().getExtras();
-        dto.setCd_Usuario(puxar.getInt("cd_usuario"));
-        dto.setNm_Usuario(puxar.getString("nm_usuario"));
-        dto.setDs_Email(puxar.getString("ds_email"));
+        dto.setCd_Usuario(puxar.getInt("cd_Usuario"));
+        dto.setNm_Usuario(puxar.getString("nm_Usuario"));
+        dto.setDs_Email(puxar.getString("ds_Email"));
+        dto.setDs_Tipo(puxar.getString("ds_Tipo"));
 
         DrawerLayout drawer = binding.drawerLayout;
         // area de navegação

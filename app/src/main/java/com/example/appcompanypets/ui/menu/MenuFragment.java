@@ -21,14 +21,8 @@ public class MenuFragment extends Fragment
 {
     ViewPager viewPager;
     SlideAdapter slideAdapter;
-    DtoUsuario dto = new DtoUsuario();
     private FragmentActivity context;
-
-    public MenuFragment(DtoUsuario dto)
-    {
-        this.dto = dto;
-    }
-
+    
     public MenuFragment()
     {
         // Required empty public constructor
@@ -69,7 +63,7 @@ public class MenuFragment extends Fragment
         viewPager.setAdapter(slideAdapter);
         viewPager.addOnPageChangeListener(viewListener);
 
-        Toast.makeText(context, "O seu código é: " +dto.getCd_Usuario(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "O seu código é: " + DtoUsuario.cd_UsuLogin, Toast.LENGTH_SHORT).show();
 
         return view;
     }

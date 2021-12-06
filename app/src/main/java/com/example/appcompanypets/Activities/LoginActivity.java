@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.appcompanypets.DAO.DaoLogin;
 import com.example.appcompanypets.DTO.DtoUsuario;
-import com.example.appcompanypets.MenuLateralActivity;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.Retrofit.ConfigRetrofit;
 
@@ -89,9 +88,11 @@ public class LoginActivity extends AppCompatActivity
                 if(arrayList.size()!=0)
                 {
                     Intent intent = new Intent(LoginActivity.this, MenuLateralActivity.class);
-                    intent.putExtra("cd_usuario", arrayList.get(0).getCd_Usuario());
-                    intent.putExtra("nm_usuario", arrayList.get(0).getNm_Usuario());
-                    intent.putExtra("ds_email", arrayList.get(0).getDs_Email());
+                    intent.putExtra("cd_Usuario", arrayList.get(0).getCd_Usuario());
+                    intent.putExtra("nm_Usuario", arrayList.get(0).getNm_Usuario());
+                    intent.putExtra("ds_Email", arrayList.get(0).getDs_Email());
+                    intent.putExtra("ds_Tipo", arrayList.get(0).getDs_Tipo());
+                    DtoUsuario.cd_UsuLogin = arrayList.get(0).getCd_Usuario();
                     startActivity(intent);
                 }
                 else

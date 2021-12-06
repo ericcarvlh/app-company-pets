@@ -1,8 +1,8 @@
 package com.example.appcompanypets.DTO;
 
-import android.graphics.Bitmap;
+import java.io.Serializable;
 
-public class DtoProduto
+public class DtoProduto implements Serializable
 {
     private int cd_Produto;
     private int cd_Categoria;
@@ -11,8 +11,26 @@ public class DtoProduto
     private double vl_Produto;
     private String ds_Produto;
     private int qt_Estoque;
-    private Bitmap ds_Foto;
     private String ds_Status;
+    private String ds_Foto;
+
+    public int getQt_Produto() {
+        return qt_Produto;
+    }
+
+    public void setQt_Produto(int qt_Produto) {
+        this.qt_Produto = qt_Produto;
+    }
+
+    private int qt_Produto;
+
+    public String getDs_Foto() {
+        return ds_Foto;
+    }
+
+    public void setDs_Foto(String ds_Foto) {
+        this.ds_Foto = ds_Foto;
+    }
 
     public String getNm_Marca() {
         return nm_Marca;
@@ -20,14 +38,6 @@ public class DtoProduto
 
     public void setNm_Marca(String nm_Marca) {
         this.nm_Marca = nm_Marca;
-    }
-
-    public Bitmap getDs_Foto() {
-        return ds_Foto;
-    }
-
-    public void setDs_Foto(Bitmap ds_Foto) {
-        this.ds_Foto = ds_Foto;
     }
 
     public String getDs_Status() {

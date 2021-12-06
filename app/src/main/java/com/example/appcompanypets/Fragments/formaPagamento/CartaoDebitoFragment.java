@@ -1,4 +1,4 @@
-package com.example.appcompanypets.ui.compra;
+package com.example.appcompanypets.Fragments.formaPagamento;
 
 import android.os.Bundle;
 
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 
 import com.example.appcompanypets.R;
 
-public class CompraFragment extends Fragment
+public class CartaoDebitoFragment extends Fragment
 {
-    public CompraFragment()
+    public CartaoDebitoFragment()
     {
         // Required empty public constructor
     }
@@ -20,7 +20,7 @@ public class CompraFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_compra, container, false);
+        View view = inflater.inflate(R.layout.fragment_cartao_debito, container, false);
         return view;
     }
 }

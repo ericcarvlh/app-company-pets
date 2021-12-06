@@ -3,47 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="2dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:padding="4dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="5dp">
+    app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:padding="2dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageViewProduto"
             android:layout_width="100dp"
             android:layout_height="120dp"
-            android:background="@mipmap/ic_launcher_round"
             android:maxWidth="100dp"
             android:maxHeight="150dp"
+            android:src="@mipmap/ic_launcher_round"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewNomeProduto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Info sobre o produto"
+            android:text="Produto"
+            app:layout_constraintBottom_toTopOf="@+id/textViewPreco"
             app:layout_constraintStart_toEndOf="@+id/imageViewProduto"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textViewPreco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:text="Valor unitário"
+            android:layout_marginTop="16dp"
+            android:text="Preço"
             app:layout_constraintStart_toEndOf="@+id/imageViewProduto"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewNomeProduto" />
 
+        <TextView
+            android:id="@+id/textViewMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Marca"
+            app:layout_constraintStart_toEndOf="@+id/textViewNomeProduto"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/imageButtonRetira"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+                tools:layout_editor_absoluteX="276dp"
+                tools:layout_editor_absoluteY="45dp" />
+
+            <EditText
+                android:id="@+id/editTextQuantidade"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:editable="true"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="308dp"
+                tools:layout_editor_absoluteY="45dp" />
+
+            <ImageButton
+                android:id="@+id/imageButtonAcrescenta"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                app:srcCompat="@android:drawable/ic_menu_add"
+                tools:layout_editor_absoluteX="338dp"
+                tools:layout_editor_absoluteY="45dp" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,6 +19,7 @@ public class DtoUsuario
     private String nm_Bairro;
     private String dt_Nascimento;
     private String ds_Complemento;
+    public static int cd_UsuLogin;
 
     public int getCd_Usuario() {
         return cd_Usuario;

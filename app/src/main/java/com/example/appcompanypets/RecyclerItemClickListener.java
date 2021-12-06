@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
+
 /**
  * Created by Jamilton
  * RecyclerView não possui o método OnItemClickListener para identificar o clique do item.
@@ -15,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * perfil: https://github.com/jamiltondamasceno
  */
 
-public class RecyclerViewClickListener implements RecyclerView.OnItemTouchListener {
+public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
 
     private OnItemClickListener mListener;
     GestureDetector mGestureDetector;
@@ -46,7 +48,7 @@ public class RecyclerViewClickListener implements RecyclerView.OnItemTouchListen
         public void onLongItemClick(View view, int position);
     }
 
-    public RecyclerViewClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
+    public RecyclerItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
         mListener = listener;
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.appcompanypets.ui.cadastro;
+package com.example.appcompanypets.Fragments.cadastro;
 
 import android.app.Activity;
 import android.os.Bundle;
