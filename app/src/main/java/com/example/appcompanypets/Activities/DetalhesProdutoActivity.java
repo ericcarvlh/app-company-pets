@@ -2,6 +2,7 @@ package com.example.appcompanypets.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity
     Button buttonAdicionarAoCarrinho;
     DaoBancoCarrinho dao = new DaoBancoCarrinho(this);
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,8 +32,6 @@ public class DetalhesProdutoActivity extends AppCompatActivity
 
         Bundle bundle = getIntent().getExtras();
         dto = (DtoProduto) bundle.getSerializable("dto");
-
-        Toast.makeText(this, "O código é " +dto.getCd_Produto(), Toast.LENGTH_SHORT).show();
 
         buttonAdicionarAoCarrinho = findViewById(R.id.buttonAdiconar);
 
@@ -56,8 +56,8 @@ public class DetalhesProdutoActivity extends AppCompatActivity
                 if(dao.verificaProdutoCarrinho(dto.getCd_Produto()))
                 {
                     // há no carrinho
-                    dao.inserirQtdProdutoCarrinho(dto);
-                        Toast.makeText(DetalhesProdutoActivity.this, "Sucessooooooo", Toast.LENGTH_SHORT).show();
+                    if (dto.getQt_Estoque()<=dao.produtoQuantidadeNoCarrinho(dto))
+                        dao.inserirQtdEValorTtProdutoCarrinho(dto);
                 }
                 else
                     // não há no carrinho

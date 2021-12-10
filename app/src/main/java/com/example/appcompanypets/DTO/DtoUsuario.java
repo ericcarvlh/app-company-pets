@@ -20,6 +20,7 @@ public class DtoUsuario
     private String dt_Nascimento;
     private String ds_Complemento;
     public static int cd_UsuLogin;
+    public static String uf_UsuLogin;
 
     public int getCd_Usuario() {
         return cd_Usuario;

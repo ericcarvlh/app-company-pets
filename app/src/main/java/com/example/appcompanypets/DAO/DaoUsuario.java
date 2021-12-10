@@ -33,8 +33,8 @@ public interface DaoUsuario
             @Field("no_Celular") String celular
     );
 
-    @GET("consultaEmailUsuario.php")
-    Call<Boolean> emailUsuario(
-            @Query("ds_Email") String email
+    @GET("consultaEnderecoUsuario.php")
+    Call<ArrayList<DtoUsuario>> EnderecoUsuario(
+            @Query("ds_Email") int cd_Usuario
     );
 }

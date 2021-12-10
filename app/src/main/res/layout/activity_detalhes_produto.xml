@@ -127,8 +127,10 @@
 
     <Button
         android:id="@+id/buttonAdiconar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_custom"
         android:text="Adicionar ao carrinho"

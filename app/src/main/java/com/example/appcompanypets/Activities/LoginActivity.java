@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity
                     intent.putExtra("nm_Usuario", arrayList.get(0).getNm_Usuario());
                     intent.putExtra("ds_Email", arrayList.get(0).getDs_Email());
                     intent.putExtra("ds_Tipo", arrayList.get(0).getDs_Tipo());
+                    DtoUsuario.uf_UsuLogin = arrayList.get(0).getNo_UF();
                     DtoUsuario.cd_UsuLogin = arrayList.get(0).getCd_Usuario();
                     startActivity(intent);
                 }

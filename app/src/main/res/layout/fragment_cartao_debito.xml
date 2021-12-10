@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeImpressoCartaoCredito">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextCVV_CartaoCredito"
+            android:id="@+id/editTextCVV_CartaoDebito"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -82,7 +82,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutMesValidadeCartaoCredito"
+        android:id="@+id/textInputLayoutMesValidadeCartaoDebito"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
         app:startIconDrawable="@drawable/ic_baseline_location_city">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextMesValidade_CartaoCredito"
+            android:id="@+id/editTextMesValidade_CartaoDebito"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -106,7 +106,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputAnoValidadeCartaoCredito"
+        android:id="@+id/textInputAnoValidadeCartaoDebito"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -131,14 +131,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonAvancar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/buttonContinuar_CartaoDebito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button_custom"
-        android:text="Continuar" />
+        android:text="Confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

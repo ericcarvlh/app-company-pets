@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.appcompanypets.DTO.DtoProduto;
+import com.example.appcompanypets.DTO.DtoUsuario;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,8 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
                 "qt_Estoque INTEGER not null," +
                 "ds_Foto varchar(150) not null," +
                 "qt_Produto INTEGER not null," +
-                "cd_Cliente INTEGER not null)";
+                "cd_Cliente INTEGER not null," +
+                "vl_TotalCompra float not null)";
         db_companyPets.execSQL(strquery);
     }
 
@@ -53,6 +55,7 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
         return analise.getCount() != 0;
     }
 
+    // insere o produto no carrinho pela primeira vez
     public long inserirProdutoCarrinho(DtoProduto dto)
     {
         ContentValues dados = colunas(dto);
@@ -60,19 +63,25 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
         return getWritableDatabase().insert(TABELA_CARRINHO, null, dados);
     }
 
-    public boolean inserirQtdProdutoCarrinho(DtoProduto dto)
+    // insere a quantidade e valor total do produto
+    public boolean inserirQtdEValorTtProdutoCarrinho(DtoProduto dto)
     {
         String comando = "SELECT * FROM " +TABELA_CARRINHO+ " WHERE cd_Produto = "+ dto.getCd_Produto();
         Cursor analise = getReadableDatabase().rawQuery(comando, null);
         int quantidadeCarrinho = 0;
+        double valor = 0;
         if(analise.moveToNext()) {
             quantidadeCarrinho = analise.getInt(8) + 1;
+            valor = analise.getDouble(4) * quantidadeCarrinho;
 
-            comando = "update "+ TABELA_CARRINHO +
-                    " set qt_Produto = "+ quantidadeCarrinho +
-                    " where cd_Produto = " + dto.getCd_Produto() +"";
+            ContentValues dados = new ContentValues();
+            dados.put("qt_Produto", quantidadeCarrinho);
+            dados.put("vl_TotalCompra", valor);
 
-            getWritableDatabase().rawQuery(comando, null);
+            String WhereClause = "cd_Produto = ?";
+            String[] args = {dto.getCd_Produto()+""};
+
+            getWritableDatabase().update(TABELA_CARRINHO, dados, WhereClause, args);
 
             return true;
         }
@@ -80,6 +89,7 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
             return false;
     }
 
+    // consulta os itens que se encontram no carrinho
     public ArrayList<DtoProduto> consultarItensCarrinho()
     {
         String comando = "SELECT * FROM " +TABELA_CARRINHO;
@@ -91,6 +101,7 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
         return arraylist;
     }
 
+    // consulta a quantidade do produto no carrinho p/ fazer uma comparação com a quantidade do estoque
     public int produtoQuantidadeNoCarrinho(DtoProduto dto)
     {
         String comando = "SELECT * FROM " +TABELA_CARRINHO+ " WHERE cd_Produto = "+ dto.getCd_Produto();
@@ -104,19 +115,22 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
     }
 
     // remove o respectivo item do banco e portanto da lista
-    public int remover(int cd_Produto)
+    public int remover(int cd_Produto, int cd_Cliente)
     {
-        String where = "cd_Produto = "+cd_Produto;
+        String where = "cd_Produto = "+cd_Produto+" and cd_Cliente = " +cd_Cliente;
         return getReadableDatabase().delete(TABELA_CARRINHO, where, null);
     }
 
     // consulta o valor total dos produtos
     public double consultaValorTotal(int cd_Cliente)
     {
-        String comando = "SELECT sum(vl_Produto) FROM " +TABELA_CARRINHO+ " WHERE cd_Cliente = "+ cd_Cliente;
+        String comando = "SELECT sum(vl_TotalCompra) FROM " +TABELA_CARRINHO+ " WHERE cd_Cliente = "+ cd_Cliente;
         Cursor analise = getReadableDatabase().rawQuery(comando, null);
 
-        return analise.getDouble(8);
+        if(analise.moveToNext())
+        return analise.getDouble(0);
+        else
+            return 0;
     }
 
     private void leituraDeDados(Cursor analise, ArrayList<DtoProduto> arraylist)
@@ -151,6 +165,8 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
         dados.put("qt_Estoque", dto.getQt_Estoque());
         dados.put("ds_Foto", dto.getDs_Foto());
         dados.put("qt_Produto", dto.getQt_Produto());
+        dados.put("cd_Cliente", DtoUsuario.cd_UsuLogin);
+        dados.put("vl_TotalCompra", dto.getVl_Produto());
 
         return dados;
     }

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/fundo_telas"
     android:layout_height="match_parent"
     tools:context=".Fragments.cadastro.CadastroFragment1">
 
@@ -16,14 +17,17 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutNomeCadastro"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:endIconMode="clear_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        android:elevation="10dp"
         android:hint="Nome"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
+        app:counterEnabled="true"
         app:counterMaxLength="80"
         app:helperText="Ex: Maicon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +39,7 @@
             android:id="@+id/editTextNome_Cadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:maxLength="81" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,11 +49,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        app:endIconMode="clear_text"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        android:elevation="10dp"
         android:hint="Data de Nascimento"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
+        app:counterEnabled="false"
         app:counterMaxLength="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +66,7 @@
             android:id="@+id/editTextDataNascimento_Cadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="date"
             android:maxLength="11" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,10 +77,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
+        app:endIconMode="clear_text"
         android:layout_marginEnd="50dp"
+        android:elevation="10dp"
         android:hint="CPF"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
+        app:counterEnabled="true"
         app:counterMaxLength="11"
         app:helperText="Ex: 111.111.111.11"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +101,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
-        android:id="@+id/spinnerParcela_CartaoCredito"
+        android:id="@+id/spinnerSexo"
         style="@style/spinner_style_outline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,20 +122,22 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        app:endIconMode="clear_text"
+        android:elevation="10dp"
         android:hint="Telefone"
-        app:helperText="Ex: 11 12345678"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
+        app:counterEnabled="true"
         app:counterMaxLength="10"
+        app:helperText="Ex: 11 12345678"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerParcela_CartaoCredito">
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSexo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextTelefone_Cadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:maxLength="11" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,9 +150,12 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        android:elevation="10dp"
         android:hint="Celular"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
+        app:counterEnabled="true"
+        app:endIconMode="clear_text"
         app:counterMaxLength="11"
         app:helperText="Ex: 11 123456789"
         app:layout_constraintEnd_toEndOf="parent"
@@ -153,20 +168,23 @@
             android:id="@+id/editTextCelular_Cadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="text|phone"
             android:maxLength="12" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonAvancar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="110dp"
         android:background="@drawable/button_custom"
+        android:elevation="10dp"
         android:text="Continuar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCelularCadastro" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

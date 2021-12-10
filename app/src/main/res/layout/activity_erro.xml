@@ -3,24 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/naoencontrado1"
     android:layout_height="match_parent"
-    android:background="@color/fundo_telas"
-    tools:context=".Activities.CadastroActivity">
+    tools:context=".Activities.ErroActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayoutConteudoCadastro"
+    <Button
+        android:id="@+id/buttonVoltar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_custom"
+        android:elevation="10dp"
+        android:text="Voltar ao inicío"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

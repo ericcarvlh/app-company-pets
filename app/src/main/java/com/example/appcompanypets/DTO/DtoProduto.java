@@ -13,6 +13,7 @@ public class DtoProduto implements Serializable
     private int qt_Estoque;
     private String ds_Status;
     private String ds_Foto;
+    private int qt_Produto;
 
     public int getQt_Produto() {
         return qt_Produto;
@@ -21,8 +22,6 @@ public class DtoProduto implements Serializable
     public void setQt_Produto(int qt_Produto) {
         this.qt_Produto = qt_Produto;
     }
-
-    private int qt_Produto;
 
     public String getDs_Foto() {
         return ds_Foto;

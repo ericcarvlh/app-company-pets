@@ -37,10 +37,12 @@ public class MenuLateralActivity extends AppCompatActivity
         setSupportActionBar(binding.appBarMenuLateral.toolbar);
 
         Bundle puxar = getIntent().getExtras();
-        dto.setCd_Usuario(puxar.getInt("cd_Usuario"));
-        dto.setNm_Usuario(puxar.getString("nm_Usuario"));
-        dto.setDs_Email(puxar.getString("ds_Email"));
-        dto.setDs_Tipo(puxar.getString("ds_Tipo"));
+        if (puxar!=null){
+            dto.setCd_Usuario(puxar.getInt("cd_Usuario"));
+            dto.setNm_Usuario(puxar.getString("nm_Usuario"));
+            dto.setDs_Email(puxar.getString("ds_Email"));
+            dto.setDs_Tipo(puxar.getString("ds_Tipo"));
+        }
 
         DrawerLayout drawer = binding.drawerLayout;
         // area de navegação
@@ -50,16 +52,14 @@ public class MenuLateralActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         textViewEmailUsuario = headerView.findViewById(R.id.textViewEmailUsuario);
         textViewNomeUsuario = headerView.findViewById(R.id.textViewNomeUsuario);
+        if (dto!=null){
         textViewNomeUsuario.setText(dto.getNm_Usuario());
         textViewEmailUsuario.setText(dto.getDs_Email());
+        }
 
         // define as configurações do navigationdrawer
-        mAppBarConfiguration = new AppBarConfiguration.Builder
-                (
-                R.id.nav_inicio, R.id.nav_produto, R.id.nav_mapa_da_loja, R.id.nav_carrinho
-                )
-                .setDrawerLayout(drawer)
-                .build();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_inicio, R.id.nav_produto, R.id.nav_mapa_da_loja, R.id.nav_carrinho).setDrawerLayout(drawer).build();
+
         // Configura a área que vai abrir os fragments
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_lateral);
 
@@ -72,9 +72,9 @@ public class MenuLateralActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
+    public boolean onSupportNavigateUp()
+    {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_lateral);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 }

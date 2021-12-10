@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.delivery.DeliveryFragment">
+    tools:context=".Fragments.delivery.DeliveryPreFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -120,7 +120,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutNumeroCartaoCredito"
+            android:id="@+id/textInputLayoutCidadeDelivery"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
             app:startIconDrawable="@drawable/ic_baseline_location_city">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCidade_CartaoCredito"
+                android:id="@+id/editTextCidade_Delivery"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -161,7 +161,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroDelivery">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCVV_CartaoCredito"
+                android:id="@+id/editTextUF_Delivery"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -203,7 +203,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroCartaoCredito" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCidadeDelivery" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

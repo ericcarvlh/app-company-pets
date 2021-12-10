@@ -25,6 +25,7 @@
 
     <string-array name="spinner_parcelamento">
         <item>Parcelas</item>
+        <item>Escolha a quantidade de parcelas</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>

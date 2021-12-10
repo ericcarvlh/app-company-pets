@@ -1,5 +1,6 @@
 package com.example.appcompanypets;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return new RecyclerViewAdapterHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapterHolder recyclerViewAdapterHolder, int position)
     {
@@ -53,7 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             recyclerViewAdapterHolder.textViewNomeProduto.setText(arrayListProduto.get(position).getNm_Produto());
             recyclerViewAdapterHolder.textViewPreco.setText(String.valueOf(arrayListProduto.get(position).getVl_Produto()));
             recyclerViewAdapterHolder.textViewMarca.setText(arrayListProduto.get(position).getNm_Marca());
-            //recyclerViewAdapterHolder.editTextQuantidade.setText(arrayListProduto.get(position).getQt_Produto());
+            recyclerViewAdapterHolder.textViewQuantidadeProduto.setText(String.valueOf(arrayListProduto.get(position).getQt_Produto()));
         }
         else if(procedimento==2)
         {
@@ -61,7 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             recyclerViewAdapterHolder.textViewNomeProduto.setText(arrayListProduto.get(position).getNm_Produto());
             recyclerViewAdapterHolder.textViewPreco.setText(String.valueOf(arrayListProduto.get(position).getVl_Produto()));
             recyclerViewAdapterHolder.textViewMarca.setText(arrayListProduto.get(position).getNm_Marca());
-            recyclerViewAdapterHolder.textViewQuantidade.setText(arrayListProduto.get(position).getNm_Marca());
+            recyclerViewAdapterHolder.textViewQuantidade.setText(arrayListProduto.get(position).getQt_Produto()+"");
         }
     }
 
@@ -74,8 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder
     {
         ImageView imageViewProduto;
-        EditText editTextQuantidade;
-        TextView textViewNomeProduto, textViewPreco, textViewMarca, textViewQuantidade;
+        TextView textViewNomeProduto, textViewPreco, textViewMarca, textViewQuantidade, textViewQuantidadeProduto;
         public RecyclerViewAdapterHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -93,7 +94,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 textViewNomeProduto = itemView.findViewById(R.id.textViewNomeProduto);
                 textViewPreco = itemView.findViewById(R.id.textViewPreco);
                 textViewMarca = itemView.findViewById(R.id.textViewMarca);
-                editTextQuantidade = itemView.findViewById(R.id.editTextQuantidade);
+                textViewQuantidadeProduto = itemView.findViewById(R.id.textViewQuantidadeProduto);
             }
             else if(procedimento==2)
             {

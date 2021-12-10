@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,19 +15,32 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.appcompanypets.Api.CEP.AsyncCEP;
+import com.example.appcompanypets.DTO.DtoCartaoCredito;
+import com.example.appcompanypets.DTO.DtoCartaoDebito;
 import com.example.appcompanypets.DTO.DtoDeliveryPresente;
+import com.example.appcompanypets.Fragments.compra.CompraFragment3;
 import com.example.appcompanypets.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class DeliveryFragment extends Fragment
+public class DeliveryPreFragment extends Fragment
 {
-    private DtoDeliveryPresente dto;
-    private FragmentActivity context;
+    DtoDeliveryPresente dto = new DtoDeliveryPresente();
+    FragmentActivity context;
     Button buttonContinuar;
-    TextInputEditText editTextLogradouro, editTextBairro, editTextNumero, editTextCEP,
-            editTextUF, editTextCidade, editTextComplemento;
-    
-    public DeliveryFragment()
+    TextInputEditText editTextLogradouro, editTextBairro, editTextNumero, editTextCEP, editTextUF, editTextCidade, editTextComplemento;
+    String formaPagamento;
+    String tipoEntrega = "deliveryPre";
+    DtoCartaoDebito dtoCartaoDebito;
+    DtoCartaoCredito dtoCartaoCredito;
+
+    public DeliveryPreFragment(String formaPagamento, DtoCartaoDebito dtoCartaoDebito, DtoCartaoCredito dtoCartaoCredito)
+    {
+        this.formaPagamento = formaPagamento;
+        this.dtoCartaoDebito = dtoCartaoDebito;
+        this.dtoCartaoCredito = dtoCartaoCredito;
+    }
+
+    public DeliveryPreFragment()
     {
         // Required empty public constructor
     }
@@ -42,7 +56,7 @@ public class DeliveryFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_delivery, container, false);
+        View view = inflater.inflate(R.layout.fragment_delivery_pre, container, false);
 
         buttonContinuar = view.findViewById(R.id.buttonContinuar_Delivery);
 
@@ -50,8 +64,8 @@ public class DeliveryFragment extends Fragment
         editTextBairro = view.findViewById(R.id.editTextBairro_Delivery);
         editTextNumero = view.findViewById(R.id.editTextNumero_Delivery);
         editTextCEP = view.findViewById(R.id.editTextCEP_Delivery);
-        editTextUF = view.findViewById(R.id.editTextCVV_CartaoCredito);
-        editTextCidade = view.findViewById(R.id.editTextCidade_CartaoCredito);
+        editTextUF = view.findViewById(R.id.editTextUF_Delivery);
+        editTextCidade = view.findViewById(R.id.editTextCidade_Delivery);
         editTextComplemento = view.findViewById(R.id.editTextComplemento_Delivery);
 
         editTextCEP.addTextChangedListener(new TextWatcher()
@@ -104,7 +118,9 @@ public class DeliveryFragment extends Fragment
                 else if(dto.getNm_Cidade().equals(""))
                     Toast.makeText(getActivity(), "É obrigatório informar A cidade.", Toast.LENGTH_SHORT).show();
                 else {
-
+                    FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frameLayoutConteudoCompra, new CompraFragment3(tipoEntrega, formaPagamento, dtoCartaoDebito, dtoCartaoCredito, dto));
+                    transaction.commit();
                 }
             }
         });

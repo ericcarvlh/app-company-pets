@@ -9,8 +9,25 @@ public class DtoCartaoDebito
     private String nm_Cartao;
     private String no_Cartao;
     private String no_CVV;
-    private Date dt_MesValidade;
-    private Date dt_AnoValidade;
+    private String dt_MesValidade;
+    private String dt_AnoValidade;
+
+    public String getDt_MesValidade() {
+        return dt_MesValidade;
+    }
+
+    public void setDt_MesValidade(String dt_MesValidade) {
+        this.dt_MesValidade = dt_MesValidade;
+    }
+
+    public String getDt_AnoValidade() {
+        return dt_AnoValidade;
+    }
+
+    public void setDt_AnoValidade(String dt_AnoValidade) {
+        this.dt_AnoValidade = dt_AnoValidade;
+    }
+
     private String ds_Status;
 
     public int getCd_Cartao() {
@@ -51,22 +68,6 @@ public class DtoCartaoDebito
 
     public void setNo_CVV(String no_CVV) {
         this.no_CVV = no_CVV;
-    }
-
-    public Date getDt_MesValidade() {
-        return dt_MesValidade;
-    }
-
-    public void setDt_MesValidade(Date dt_MesValidade) {
-        this.dt_MesValidade = dt_MesValidade;
-    }
-
-    public Date getDt_AnoValidade() {
-        return dt_AnoValidade;
-    }
-
-    public void setDt_AnoValidade(Date dt_AnoValidade) {
-        this.dt_AnoValidade = dt_AnoValidade;
     }
 
     public String getDs_Status() {

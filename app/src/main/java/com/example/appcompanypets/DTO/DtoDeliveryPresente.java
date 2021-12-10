@@ -1,5 +1,7 @@
 package com.example.appcompanypets.DTO;
 
+import java.io.Serializable;
+
 public class DtoDeliveryPresente
 {
     private int cd_DeliveryPresente;

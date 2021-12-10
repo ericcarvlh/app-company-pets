@@ -61,15 +61,15 @@ public class CadastroFragment3 extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_cadastro3, container, false);
 
-        buttonFinalizar = view.findViewById(R.id.buttonContinuar_Delivery);
+        buttonFinalizar = view.findViewById(R.id.buttonContinuar_Cadastro);
 
-        editTextLogradouro = view.findViewById(R.id.editTextLogradouro_Delivery);
-        editTextBairro = view.findViewById(R.id.editTextBairro_Delivery);
-        editTextNumero = view.findViewById(R.id.editTextNumero_Delivery);
-        editTextCEP = view.findViewById(R.id.editTextCEP_Delivery);
-        editTextUF = view.findViewById(R.id.editTextCVV_CartaoCredito);
-        editTextCidade = view.findViewById(R.id.editTextCidade_CartaoCredito);
-        editTextComplemento = view.findViewById(R.id.editTextComplemento_Delivery);
+        editTextLogradouro = view.findViewById(R.id.editTextLogradouro_Cadastro);
+        editTextBairro = view.findViewById(R.id.editTextBairro_Cadastro);
+        editTextNumero = view.findViewById(R.id.editTextNumero_Cadastro);
+        editTextCEP = view.findViewById(R.id.editTextCEP_Cadastro);
+        editTextUF = view.findViewById(R.id.editTextUF_Cadastro);
+        editTextCidade = view.findViewById(R.id.editTextCidade_Cadastro);
+        editTextComplemento = view.findViewById(R.id.editTextComplemento_Cadastro);
 
         editTextCEP.addTextChangedListener(new TextWatcher()
         {

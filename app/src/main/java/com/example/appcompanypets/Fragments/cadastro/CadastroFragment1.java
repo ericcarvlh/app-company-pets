@@ -33,7 +33,7 @@ public class CadastroFragment1 extends Fragment
     Button buttonAvancar;
     TextInputEditText editTextNome, editTextTelefone, editTextCelular,
             editTextDataNascimento, editTextCPF;
-    int ano, mes, dia, idadeUsuario;
+    int idadeUsuario;
 
     public CadastroFragment1()
     {
@@ -60,15 +60,21 @@ public class CadastroFragment1 extends Fragment
         editTextCPF = view.findViewById(R.id.editTextCPF_Cadastro);
         editTextCelular = view.findViewById(R.id.editTextCelular_Cadastro);
         editTextTelefone = view.findViewById(R.id.editTextTelefone_Cadastro);
-        spinner_sexo = view.findViewById(R.id.spinnerParcela_CartaoCredito);
+        spinner_sexo = view.findViewById(R.id.spinnerSexo);
 
         editTextDataNascimento.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
                 DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener()
                 {
+
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day)
                     {
@@ -78,7 +84,7 @@ public class CadastroFragment1 extends Fragment
                         dto.setDt_Nascimento(year+"-"+month+"-"+day);
                         editTextDataNascimento.setText(dataNascDemonstrativa);
                     }
-                }, ano, mes, dia);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });
@@ -103,9 +109,6 @@ public class CadastroFragment1 extends Fragment
                     case 2:
                         dto.setSg_Sexo("F");
                         break;
-//                    case 3:
-//                        dto.setSg_Sexo("P");
-//                        break;
                 }
             }
 
