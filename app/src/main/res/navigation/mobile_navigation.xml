@@ -29,4 +29,16 @@
         android:label="@string/menu_carrinho"
         tools:layout="@layout/fragment_carrinho" />
 
+    <fragment
+        android:id="@+id/nav_sair"
+        android:name="com.example.appcompanypets.ui.SairFragment"
+        android:label="@string/menu_sair_app"
+        tools:layout="@layout/fragment_sair" />
+
+    <fragment
+        android:id="@+id/nav_contatos"
+        android:name="com.example.appcompanypets.ui.SairFragment"
+        android:label="@string/menu_contato_vet"
+        tools:layout="@layout/fragment_veterinarios" />
+
 </navigation>

@@ -10,7 +10,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.appcompanypets.DTO.DtoCartaoDebito;
@@ -24,9 +26,10 @@ public class CartaoDebitoFragment extends Fragment
     DtoCartaoDebito dto = new DtoCartaoDebito();
     Button buttonContinuar;
     TextInputEditText editTextNomeImpresso, editTextNumeroCartao,
-            editTextCVV, editTextMesValidade, editTextAnoValidade;
+            editTextCVV, editTextAnoValidade;
     String formaPagamento = "Cartão de Débito";
     String tipoEntrega;
+    Spinner spinnerMes;
 
     public CartaoDebitoFragment(String tipoEntrega)
     {
@@ -54,10 +57,15 @@ public class CartaoDebitoFragment extends Fragment
         editTextNomeImpresso = view.findViewById(R.id.editTextNomeImpresso_CartaoDebito);
         editTextNumeroCartao = view.findViewById(R.id.editTextNumero_CartaoDebito);
         editTextCVV = view.findViewById(R.id.editTextCVV_CartaoDebito);
-        editTextMesValidade = view.findViewById(R.id.editTextMesValidade_CartaoDebito);
         editTextAnoValidade = view.findViewById(R.id.editTextAnoValidade_CartaoDebito);
 
         buttonContinuar = view.findViewById(R.id.buttonContinuar_CartaoDebito);
+
+        spinnerMes = view.findViewById(R.id.spinnerMes_CartaoDebito);
+
+        ArrayAdapter<CharSequence> mes = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_mes, android.R.layout.simple_spinner_dropdown_item);
+        mes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMes.setAdapter(mes);
 
         buttonContinuar.setOnClickListener(new View.OnClickListener()
         {
@@ -68,7 +76,6 @@ public class CartaoDebitoFragment extends Fragment
                 dto.setNo_Cartao(editTextNumeroCartao.getText().toString());
                 dto.setNo_CVV(editTextCVV.getText().toString());
                 dto.setDt_AnoValidade(editTextAnoValidade.getText().toString());
-                dto.setDt_MesValidade(editTextMesValidade.getText().toString());
 
                 if (dto!=null && tipoEntrega!=null)
                 {

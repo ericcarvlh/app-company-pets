@@ -4,16 +4,14 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appcompanypets.DTO.DtoCarrinho;
 import com.example.appcompanypets.DTO.DtoProduto;
+import com.example.appcompanypets.DTO.DtoVeterinarios;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,13 +19,15 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewAdapterHolder>
 {
     ArrayList<DtoProduto> arrayListProduto;
+    ArrayList<DtoVeterinarios> arrayListVeterinario;
     int procedimento, adapterLayout;
 
-    public RecyclerViewAdapter(ArrayList<DtoProduto> arrayListProduto, int procedimento, int adapterLayout)
+    public RecyclerViewAdapter(ArrayList<DtoProduto> arrayListProduto, int procedimento, int adapterLayout, ArrayList<DtoVeterinarios> arrayListVeterinario)
     {
         this.arrayListProduto = arrayListProduto;
         this.procedimento = procedimento;
         this.adapterLayout = adapterLayout;
+        this.arrayListVeterinario = arrayListVeterinario;
     }
 
     @NonNull
@@ -46,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             Picasso.get().load(arrayListProduto.get(position).getDs_Foto()).into(recyclerViewAdapterHolder.imageViewProduto);
             recyclerViewAdapterHolder.textViewNomeProduto.setText(arrayListProduto.get(position).getNm_Produto());
-            recyclerViewAdapterHolder.textViewPreco.setText(String.valueOf(arrayListProduto.get(position).getVl_Produto()));
+            recyclerViewAdapterHolder.textViewPreco.setText("R$ "+arrayListProduto.get(position).getVl_Produto());
             recyclerViewAdapterHolder.textViewMarca.setText(arrayListProduto.get(position).getNm_Marca());
         }
         else if(procedimento==1)
@@ -65,6 +65,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             recyclerViewAdapterHolder.textViewMarca.setText(arrayListProduto.get(position).getNm_Marca());
             recyclerViewAdapterHolder.textViewQuantidade.setText(arrayListProduto.get(position).getQt_Produto()+"");
         }
+        else if(procedimento==3)
+        {
+            Picasso.get().load(arrayListVeterinario.get(position).getDs_Imagem()).into(recyclerViewAdapterHolder.imageViewVeterinario);
+            recyclerViewAdapterHolder.textViewVetEmail.setText(arrayListVeterinario.get(position).getEmail());
+            recyclerViewAdapterHolder.textViewVetNumero.setText(String.valueOf(arrayListVeterinario.get(position).getTelefone()));
+            recyclerViewAdapterHolder.textViewVetNome.setText(arrayListVeterinario.get(position).getNome());
+        }
     }
 
     @Override
@@ -75,8 +82,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder
     {
-        ImageView imageViewProduto;
-        TextView textViewNomeProduto, textViewPreco, textViewMarca, textViewQuantidade, textViewQuantidadeProduto;
+        ImageView imageViewProduto, imageViewVeterinario;
+        TextView textViewNomeProduto, textViewPreco, textViewMarca, textViewQuantidade, textViewQuantidadeProduto,
+        textViewVetEmail, textViewVetNome, textViewVetNumero;
         public RecyclerViewAdapterHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -103,6 +111,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 textViewPreco = itemView.findViewById(R.id.textViewPreco);
                 textViewMarca = itemView.findViewById(R.id.textViewMarca);
                 textViewQuantidade = itemView.findViewById(R.id.textViewQuantidade);
+            }
+            else if(procedimento==3)
+            {
+                imageViewVeterinario = itemView.findViewById(R.id.imageViewFotoVet);
+                textViewVetNome = itemView.findViewById(R.id.textViewVetNome);
+                textViewVetEmail = itemView.findViewById(R.id.textViewVetEmail);;
+                textViewVetNumero = itemView.findViewById(R.id.textViewVetNumero);;
             }
         }
     }

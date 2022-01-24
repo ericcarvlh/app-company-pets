@@ -26,8 +26,8 @@ public class CartaoCreditoFragment extends Fragment
     FragmentActivity context;
     DtoCartaoCredito dto = new DtoCartaoCredito();
     Button buttonContinuar;
-    Spinner spinnerParcela;
-    TextInputEditText editTextNomeImpresso, editTextNumeroCartao, editTextCVV, editTextMesValidade, editTextAnoValidade;
+    Spinner spinnerParcela, spinnerMes;
+    TextInputEditText editTextNomeImpresso, editTextNumeroCartao, editTextCVV, editTextAnoValidade;
     String formaPagamento = "Cartão de Crédito";
     String tipoEntrega;
 
@@ -57,16 +57,20 @@ public class CartaoCreditoFragment extends Fragment
         editTextNomeImpresso = view.findViewById(R.id.editTextNomeImpresso_CartaoCredito);
         editTextNumeroCartao = view.findViewById(R.id.editTextNumero_CartaoCredito);
         editTextCVV = view.findViewById(R.id.editTextCVV_CartaoCredito);
-        editTextMesValidade = view.findViewById(R.id.editTextMesValidade_CartaoCredito);
         editTextAnoValidade = view.findViewById(R.id.editTextAnoValidade_CartaoCredito);
 
         buttonContinuar = view.findViewById(R.id.buttonContinuar_CartaoCredito);
 
         spinnerParcela = view.findViewById(R.id.spinnerParcela_CartaoCredito);
+        spinnerMes = view.findViewById(R.id.spinnerMes_CartaoCredito);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_parcelamento, android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerParcela.setAdapter(adapter);
+        ArrayAdapter<CharSequence> parcelamento = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_parcelamento, android.R.layout.simple_spinner_dropdown_item);
+        parcelamento.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerParcela.setAdapter(parcelamento);
+
+        ArrayAdapter<CharSequence> mes = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_mes, android.R.layout.simple_spinner_dropdown_item);
+        mes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMes.setAdapter(mes);
 
         spinnerParcela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -86,6 +90,22 @@ public class CartaoCreditoFragment extends Fragment
             }
         });
 
+        spinnerMes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                if (position>0)
+                    dto.setDt_MesValidade(position+"");
+                else
+                    dto.setDt_MesValidade("0");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         buttonContinuar.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -95,16 +115,22 @@ public class CartaoCreditoFragment extends Fragment
                 dto.setNo_Cartao(editTextNumeroCartao.getText().toString());
                 dto.setNo_CVV(editTextCVV.getText().toString());
                 dto.setDt_AnoValidade(editTextAnoValidade.getText().toString());
-                dto.setDt_MesValidade(editTextMesValidade.getText().toString());
 
-                if (dto!=null && tipoEntrega!=null)
-                {
+                if (dto.getNm_Cartao().equals(""))
+                    Toast.makeText(context, "Este campo é obrigatório.", Toast.LENGTH_SHORT).show();
+                else if(dto.getNo_Parcelas().equals("0"))
+                    Toast.makeText(context, "Escolha a quantidade de parcelas que você deseja.", Toast.LENGTH_SHORT).show();
+                else if(dto.getNo_CVV().length()<3 || dto.getNo_CVV().equals(""))
+                    Toast.makeText(context, "Este campo é obrigatório. Tendo no mínimo 3 e no máximo 3 digitos.", Toast.LENGTH_SHORT).show();
+                else if(dto.getDt_AnoValidade().equals("") || dto.getDt_AnoValidade().length()<4)
+                    Toast.makeText(context, "Este campo é obrigatório. Tendo no mínimo 4 e no máximo 4 digitos.", Toast.LENGTH_SHORT).show();
+                else if(dto.getDt_MesValidade().equals(""))
+                    Toast.makeText(context, "Escolha o mês de validade.", Toast.LENGTH_SHORT).show();
+                else {
                     FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frameLayoutConteudoCompra, new CompraFragment2(tipoEntrega, formaPagamento, null, dto));
                     transaction.commit();
                 }
-                else
-                    Toast.makeText(context, "Há campos nulos.", Toast.LENGTH_SHORT).show();
             }
         });
 

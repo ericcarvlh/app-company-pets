@@ -102,6 +102,7 @@ public class CompraFragment4 extends Fragment
             {
                 Intent intent = new Intent(context, MenuLateralActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 

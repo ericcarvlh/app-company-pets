@@ -6,30 +6,39 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_inicio"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_home"
             android:title="@string/menu_inicio" />
         <item
             android:id="@+id/nav_produto"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_baseline_store"
             android:title="@string/menu_produtos" />
         <item
             android:id="@+id/nav_mapa_da_loja"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_map"
             android:title="@string/menu_mapa_da_loja" />
 
         <item
             android:id="@+id/nav_carrinho"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_shopping_cart"
             android:title="@string/menu_carrinho" />
+
+        <item
+            android:id="@+id/nav_itensPeidos"
+            android:icon="@drawable/ic_baseline_description"
+            android:title="@string/menu_meusPedidos" />
 
     </group>
 
     <item android:title="Outros">
         <menu>
             <item
-                android:id="@+id/nav_teste"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="@string/menu_mapa_da_loja" />
+                android:id="@+id/nav_contatos"
+                android:icon="@drawable/ic_baseline_perm_contact_calendar"
+                android:title="@string/menu_contato_vet" />
+            <item
+                android:id="@+id/nav_sair"
+                android:icon="@drawable/ic_baseline_exit_to_app"
+                android:title="@string/menu_sair_app" />
         </menu>
     </item>
 </menu>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundo_telas"
     tools:context=".Fragments.formaPagamento.CartaoDebitoFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -17,19 +18,19 @@
         android:hint="Nome impresso"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
-        app:counterMaxLength="60"
-        app:helperText="Ex: 1234567890"
+        app:counterMaxLength="40"
+        app:helperText="Ex: Jordan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_location_city">
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:startIconDrawable="@drawable/ic_baseline_perm_identity">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextNomeImpresso_CartaoDebito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="61" />
+            android:maxLength="41" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -42,18 +43,17 @@
         android:hint="Número"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
-        app:counterMaxLength="60"
-        app:helperText="Ex: 1234567890"
+        app:counterMaxLength="16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeImpressoCartaoCredito"
-        app:startIconDrawable="@drawable/ic_baseline_location_city">
+        app:startIconDrawable="@drawable/ic_baseline_credit_card">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextNumero_CartaoDebito"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="61" />
+            android:maxLength="16" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,41 +68,17 @@
         android:visibility="visible"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
-        app:counterMaxLength="10"
-        app:helperText="Ex: 124"
+        app:counterMaxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeImpressoCartaoCredito">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeImpressoCartaoCredito"
+        app:startIconDrawable="@drawable/ic_baseline_credit_card">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextCVV_CartaoDebito"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="10" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutMesValidadeCartaoDebito"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:hint="Mes validade"
-        app:boxBackgroundColor="#FFFFFF"
-        app:boxStrokeColor="#4BB4FF"
-        app:counterMaxLength="60"
-        app:helperText="Ex: 1234567890"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroCartaoCredito"
-        app:startIconDrawable="@drawable/ic_baseline_location_city">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextMesValidade_CartaoDebito"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLength="61" />
+            android:maxLength="3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -117,8 +93,8 @@
         android:visibility="visible"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
-        app:counterMaxLength="10"
-        app:helperText="Ex: 124"
+        app:counterMaxLength="4"
+        app:helperText="Ex: 2025"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCVVCartaoCredito">
 
@@ -127,8 +103,20 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="10" />
+            android:maxLength="4" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinnerMes_CartaoDebito"
+        style="@style/spinner_style_outline"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNumeroCartaoCredito" />
+
 
     <Button
         android:id="@+id/buttonContinuar_CartaoDebito"
@@ -140,5 +128,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

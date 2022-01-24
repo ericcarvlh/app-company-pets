@@ -49,7 +49,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        app:endIconMode="clear_text"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
         android:elevation="10dp"
@@ -58,9 +57,11 @@
         app:boxStrokeColor="#4BB4FF"
         app:counterEnabled="false"
         app:counterMaxLength="10"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeCadastro">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeCadastro"
+        app:startIconDrawable="@drawable/ic_baseline_calendar_today">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextDataNascimento_Cadastro"
@@ -122,17 +123,18 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
-        app:endIconMode="clear_text"
         android:elevation="10dp"
         android:hint="Telefone"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
         app:counterEnabled="true"
         app:counterMaxLength="10"
+        app:endIconMode="clear_text"
         app:helperText="Ex: 11 12345678"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerSexo">
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSexo"
+        app:startIconDrawable="@drawable/ic_baseline_local_phone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextTelefone_Cadastro"
@@ -155,14 +157,14 @@
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="#4BB4FF"
         app:counterEnabled="true"
-        app:endIconMode="clear_text"
         app:counterMaxLength="11"
+        app:endIconMode="clear_text"
         app:helperText="Ex: 11 123456789"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelefoneCadastro"
-        app:startIconDrawable="@drawable/ic_baseline_perm_identity">
+        app:startIconDrawable="@drawable/ic_baseline_smartphone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextCelular_Cadastro"

@@ -34,9 +34,6 @@ public class CompraFragment2 extends Fragment
     String formaPagamento;
     DtoCartaoCredito dtoCartaoCredito;
     DtoCartaoDebito dtoCartaoDebito;
-    DtoUsuario dtoUsuario = new DtoUsuario();
-    ArrayList<DtoUsuario> arrayList  = new ArrayList<>();
-    Retrofit retrofit;
 
     public CompraFragment2(String tipoEntrega, String formaPagamento, DtoCartaoDebito dtoCartaoDebito, DtoCartaoCredito dtoCartaoCredito)
     {
@@ -76,38 +73,5 @@ public class CompraFragment2 extends Fragment
         transaction.commit();
 
         return view;
-    }
-
-    private void enderecoUsuario(int cd_Usuario)
-    {
-        retrofit = ConfigRetrofit.getRetrofit();
-        DaoUsuario dao = retrofit.create(DaoUsuario.class);
-        Call<ArrayList<DtoUsuario>> call = dao.EnderecoUsuario(cd_Usuario);
-        call.enqueue(new Callback<ArrayList<DtoUsuario>>()
-        {
-            @Override
-            public void onResponse(Call<ArrayList<DtoUsuario>> call, Response<ArrayList<DtoUsuario>> response)
-            {
-                arrayList = response.body();
-                if(arrayList.size()!=0)
-                {
-                    dtoUsuario.setNm_Bairro(arrayList.get(0).getNm_Bairro());
-                    dtoUsuario.setNo_UF(arrayList.get(0).getNo_UF());
-                    dtoUsuario.setNm_Cidade(arrayList.get(0).getNm_Cidade());
-                    dtoUsuario.setNm_Bairro(arrayList.get(0).getNm_Bairro());
-                    dtoUsuario.setNm_Logradouro(arrayList.get(0).getNm_Logradouro());
-                    dtoUsuario.setNo_Logradouro(arrayList.get(0).getNo_Logradouro());
-                    dtoUsuario.setNo_CEP(arrayList.get(0).getNo_CEP());
-                    dtoUsuario.setDs_Complemento(arrayList.get(0).getDs_Complemento());
-                }
-                else
-                    Toast.makeText(context, "Erro ao executar a compra.", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<DtoUsuario>> call, Throwable throwable) {
-
-            }
-        });
     }
 }

@@ -1,8 +1,8 @@
-package com.example.appcompanypets.Api.CEP;
+package com.example.appcompanypets.API.CEP;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import com.example.appcompanypets.Api.JsonHandler;
+import com.example.appcompanypets.API.JsonHandler;
 import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;

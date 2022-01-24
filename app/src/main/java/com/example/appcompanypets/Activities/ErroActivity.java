@@ -21,14 +21,20 @@ public class ErroActivity extends AppCompatActivity
 
         buttonVoltar = findViewById(R.id.buttonVoltar);
 
+
         buttonVoltar.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(ErroActivity.this, MenuLateralActivity.class);
-                startActivity(intent);
-                finish();
+                Intent intent = new Intent(ErroActivity.this, BoasVindasActivity.class);
+                try {
+                    Thread.sleep(4000);
+                    startActivity(intent);
+                    finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

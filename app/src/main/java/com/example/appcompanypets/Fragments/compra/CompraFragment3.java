@@ -19,15 +19,13 @@ import com.example.appcompanypets.DTO.DtoCartaoDebito;
 import com.example.appcompanypets.DTO.DtoCompra;
 import com.example.appcompanypets.DTO.DtoDeliveryPresente;
 import com.example.appcompanypets.DTO.DtoUsuario;
-import com.example.appcompanypets.Fragments.delivery.DeliveryPreFragment;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.Retrofit.ConfigRetrofit;
-import com.example.appcompanypets.ui.carrinho.DaoBancoCarrinho;
+import com.example.appcompanypets.DAO.DaoBancoCarrinho;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -87,10 +85,22 @@ public class CompraFragment3 extends Fragment
         DtoCompra.ItensCarrinho = dao.consultarItensCarrinho();
         dtoCompra.setVl_TotalCompra(dao.consultaValorTotal(DtoUsuario.cd_UsuLogin));
 
+        if (tipoEntrega.equals("deliveryCli") || tipoEntrega.equals("deliveryLoj"))
+        {
+            dtoDeliveryPresente = new DtoDeliveryPresente();
+            dtoDeliveryPresente.setNo_CEP("vazio");
+            dtoDeliveryPresente.setNm_Cidade("vazio");
+            dtoDeliveryPresente.setNm_Bairro("vazio");
+            dtoDeliveryPresente.setNm_Logradouro("vazio");
+            dtoDeliveryPresente.setNo_Logradouro("vazio");
+            dtoDeliveryPresente.setDs_Complemento("vazio");
+            dtoDeliveryPresente.setDs_UF("vazio");
+        }
+
         if (dtoCartaoCredito!=null)
-            realizaCadastroDaCompra(formaPagamento, tipoEntrega, dtoCompra.getVl_TotalCompra(), DtoUsuario.cd_UsuLogin, localDate.toString(), dtoCartaoCredito.getNm_Cartao(), dtoCartaoCredito.getNo_Cartao(), dtoCartaoCredito.getNo_CVV(), dtoCartaoCredito.getNo_Parcelas(), dtoCartaoCredito.getDt_MesValidade(), dtoCartaoCredito.getDt_AnoValidade(), dtoDeliveryPresente.getNo_UF(), dtoDeliveryPresente.getNm_Cidade(), dtoDeliveryPresente.getNm_Bairro(), dtoDeliveryPresente.getNm_Logradouro(), dtoDeliveryPresente.getNo_Logradouro(), dtoDeliveryPresente.getNo_CEP(), dtoDeliveryPresente.getDs_Complemento());
+            realizaCadastroDaCompra(formaPagamento, tipoEntrega, dtoCompra.getVl_TotalCompra(), DtoUsuario.cd_UsuLogin, localDate.toString(), dtoCartaoCredito.getNm_Cartao(), dtoCartaoCredito.getNo_Cartao(), dtoCartaoCredito.getNo_CVV(), dtoCartaoCredito.getNo_Parcelas(), dtoCartaoCredito.getDt_MesValidade(), dtoCartaoCredito.getDt_AnoValidade(), dtoDeliveryPresente.getDs_UF(), dtoDeliveryPresente.getNm_Cidade(), dtoDeliveryPresente.getNm_Bairro(), dtoDeliveryPresente.getNm_Logradouro(), dtoDeliveryPresente.getNo_Logradouro(), dtoDeliveryPresente.getNo_CEP(), dtoDeliveryPresente.getDs_Complemento());
         else
-            realizaCadastroDaCompra(formaPagamento, tipoEntrega, dtoCompra.getVl_TotalCompra(), DtoUsuario.cd_UsuLogin, dataEntrega, dtoCartaoDebito.getNm_Cartao(), dtoCartaoDebito.getNo_Cartao(), dtoCartaoDebito.getNo_CVV(), "", dtoCartaoDebito.getDt_MesValidade(), dtoCartaoDebito.getDt_AnoValidade(), dtoDeliveryPresente.getNo_UF(), dtoDeliveryPresente.getNm_Cidade(), dtoDeliveryPresente.getNm_Bairro(), dtoDeliveryPresente.getNm_Logradouro(), dtoDeliveryPresente.getNo_Logradouro(), dtoDeliveryPresente.getNo_CEP(), dtoDeliveryPresente.getDs_Complemento());
+            realizaCadastroDaCompra(formaPagamento, tipoEntrega, dtoCompra.getVl_TotalCompra(), DtoUsuario.cd_UsuLogin, dataEntrega, dtoCartaoDebito.getNm_Cartao(), dtoCartaoDebito.getNo_Cartao(), dtoCartaoDebito.getNo_CVV(), "", dtoCartaoDebito.getDt_MesValidade(), dtoCartaoDebito.getDt_AnoValidade(), dtoDeliveryPresente.getDs_UF(), dtoDeliveryPresente.getNm_Cidade(), dtoDeliveryPresente.getNm_Bairro(), dtoDeliveryPresente.getNm_Logradouro(), dtoDeliveryPresente.getNo_Logradouro(), dtoDeliveryPresente.getNo_CEP(), dtoDeliveryPresente.getDs_Complemento());
 
         return view;
     }
@@ -102,13 +112,13 @@ public class CompraFragment3 extends Fragment
 
         if (tipoEntrega.equals("deliveryCli") || tipoEntrega.equals("deliveryLoj"))
         {
-          UFEstado = "vazio";
-          cidade = "vazio";
-          bairro = "vazio";
-          logradouro = "vazio";
-          numero = "vazio";
-          CEP = "vazio";
-          complemento = "vazio";
+            UFEstado = "vazio";
+            cidade = "vazio";
+            bairro = "vazio";
+            logradouro = "vazio";
+            numero = "vazio";
+            CEP = "vazio";
+            complemento = "vazio";
         }
 
         retrofit = ConfigRetrofit.getRetrofit();

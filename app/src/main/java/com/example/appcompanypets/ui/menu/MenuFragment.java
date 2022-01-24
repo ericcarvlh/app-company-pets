@@ -42,19 +42,15 @@ public class MenuFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         int imagens[] = {
-                R.drawable.imgboasvindas1,
-                R.drawable.imgboasvindas2,
-                R.drawable.imgboasvindas3,
-                R.drawable.imgboasvindas4,
-                R.drawable.imgboasvindas5
+                R.drawable.imgmenuinicial1,
+                R.drawable.imgmenuinicial2,
+                R.drawable.imgmenuinicial3
         };
 
         int descricao[] = {
                 R.string.descricaoBoasvindas1,
                 R.string.descricaoBoasvindas2,
-                R.string.descricaoBoasvindas3,
-                R.string.descricaoBoasvindas4,
-                R.string.descricaoBoasvindas5
+                R.string.descricaoBoasvindas4
         };
 
         viewPager = view.findViewById(R.id.viewPagerMenu);
@@ -62,8 +58,6 @@ public class MenuFragment extends Fragment
 
         viewPager.setAdapter(slideAdapter);
         viewPager.addOnPageChangeListener(viewListener);
-
-        Toast.makeText(context, "O seu código é: " + DtoUsuario.cd_UsuLogin, Toast.LENGTH_SHORT).show();
 
         return view;
     }

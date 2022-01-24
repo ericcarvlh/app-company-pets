@@ -31,6 +31,8 @@ public class LoginActivity extends AppCompatActivity
     DtoUsuario dto = new DtoUsuario();
     ArrayList<DtoUsuario> arrayList = new ArrayList<DtoUsuario>();
     Retrofit retrofit;
+    int tentativasLogin;
+    int tentativasRestante = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,15 +52,21 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                dto.setDs_Email(editTextEmail.getText().toString());
-                dto.setDs_Senha(editTextSenha.getText().toString());
+                try {
+                    dto.setDs_Email(editTextEmail.getText().toString());
+                    dto.setDs_Senha(editTextSenha.getText().toString());
 
-                if(dto.getDs_Email().equals("") || dto.getDs_Email().length()<6)
-                    Toast.makeText(LoginActivity.this, "É obrigatório informar o email, com no máximo 60 caracteres", Toast.LENGTH_SHORT).show();
-                else if(dto.getDs_Senha().equals("") || dto.getDs_Senha().length()<10)
-                    Toast.makeText(LoginActivity.this, "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 caracteres.", Toast.LENGTH_SHORT).show();
-                else {
-                    consultaLogin(dto.getDs_Email(), dto.getDs_Senha());
+                    if(dto.getDs_Email().equals("") || dto.getDs_Email().length()<6)
+                        Toast.makeText(LoginActivity.this, "É obrigatório informar o email, com no máximo 60 caracteres", Toast.LENGTH_SHORT).show();
+                    else if(dto.getDs_Senha().equals("") || dto.getDs_Senha().length()<10)
+                        Toast.makeText(LoginActivity.this, "É obrigatório informar a senha, mínimo de 10 e maxímo de 20 caracteres.", Toast.LENGTH_SHORT).show();
+                    else {
+                        consultaLogin(dto.getDs_Email(), dto.getDs_Senha());
+                    }
+                }
+                catch (Exception e){
+                    Intent intent = new Intent(LoginActivity.this, ErroActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -92,14 +100,27 @@ public class LoginActivity extends AppCompatActivity
                     intent.putExtra("nm_Usuario", arrayList.get(0).getNm_Usuario());
                     intent.putExtra("ds_Email", arrayList.get(0).getDs_Email());
                     intent.putExtra("ds_Tipo", arrayList.get(0).getDs_Tipo());
-                    DtoUsuario.uf_UsuLogin = arrayList.get(0).getNo_UF();
                     DtoUsuario.cd_UsuLogin = arrayList.get(0).getCd_Usuario();
                     startActivity(intent);
                 }
-                else
+                else{
                     Toast.makeText(LoginActivity.this, "Usuário ou senha incorretos.", Toast.LENGTH_SHORT).show();
-                // aqui podemos contabilizar as tentativas feitas, sendo assim p
-                // reduzir as chances de ataque por força bruta
+                    tentativasLogin += 1;
+                    tentativasRestante -= 1;
+                    Toast.makeText(LoginActivity.this, "Você tem "+ tentativasRestante +" chances.", Toast.LENGTH_SHORT).show();
+                    if (tentativasLogin==3){
+                        Toast.makeText(LoginActivity.this, "Você esgotou suas tentativas de realizar login, aguarde 10 segundos e tente novamente.", Toast.LENGTH_SHORT).show();
+                        try {
+                            Thread.sleep(10000);
+                            tentativasLogin = 0;
+                            tentativasRestante = 3;
+                            Toast.makeText(LoginActivity.this, "Pode tentar novamente", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Lhe restam "+tentativasRestante+" tentativas.", Toast.LENGTH_SHORT).show();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
             }
 
             @Override

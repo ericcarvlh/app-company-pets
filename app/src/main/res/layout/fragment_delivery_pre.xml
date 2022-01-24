@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundo_telas"
     tools:context=".Fragments.delivery.DeliveryPreFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +28,7 @@
             android:hint="CEP"
             app:boxBackgroundColor="#FFFFFF"
             app:boxStrokeColor="#4BB4FF"
+            app:counterEnabled="true"
             app:counterMaxLength="8"
             app:helperText="Ex: 05089-000"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +40,7 @@
                 android:id="@+id/editTextCEP_Delivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLength="9" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,6 +55,7 @@
             android:hint="Rua"
             app:boxBackgroundColor="#FFFFFF"
             app:boxStrokeColor="#4BB4FF"
+            app:counterEnabled="true"
             app:counterMaxLength="80"
             app:helperText="Ex: Rua Guiapá"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +82,7 @@
             android:hint="Bairro"
             app:boxBackgroundColor="#FFFFFF"
             app:boxStrokeColor="#4BB4FF"
+            app:counterEnabled="true"
             app:counterMaxLength="60"
             app:helperText="Ex: Vila Leopoldina"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:maxLength="6"
+                android:maxLength="5"
                 android:numeric="integer" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,7 +144,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:maxLength="61" />
+                android:maxLength="60" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -171,7 +175,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutComplementoDelivery"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="125dp"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="50dp"
@@ -181,15 +185,14 @@
             app:counterMaxLength="60"
             app:helperText="Ex: casa"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBairroDelivery"
-            app:startIconDrawable="@drawable/ic_baseline_location_city">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBairroDelivery">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextComplemento_Delivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:maxLength="256" />
+                android:maxLength="60" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

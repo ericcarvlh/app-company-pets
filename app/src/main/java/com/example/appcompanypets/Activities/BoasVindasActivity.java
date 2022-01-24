@@ -23,20 +23,18 @@ public class BoasVindasActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boas_vindas);
 
+        setTitle("Bem vindo(a)!");
+
         int imagens[] = {
                 R.drawable.imgboasvindas1,
                 R.drawable.imgboasvindas2,
-                R.drawable.imgboasvindas3,
-                R.drawable.imgboasvindas4,
-                R.drawable.imgboasvindas5
+                R.drawable.imgboasvindas4
         };
 
         int descricao[] = {
                 R.string.descricaoBoasvindas1,
                 R.string.descricaoBoasvindas2,
-                R.string.descricaoBoasvindas3,
-                R.string.descricaoBoasvindas4,
-                R.string.descricaoBoasvindas5
+                R.string.descricaoBoasvindas4
         };
 
         buttonLogin = findViewById(R.id.buttonLogin);

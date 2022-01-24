@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.appcompanypets.Api.CEP.AsyncCEP;
+import com.example.appcompanypets.API.CEP.AsyncCEP;
 import com.example.appcompanypets.DTO.DtoCartaoCredito;
 import com.example.appcompanypets.DTO.DtoCartaoDebito;
 import com.example.appcompanypets.DTO.DtoDeliveryPresente;
@@ -97,7 +97,7 @@ public class DeliveryPreFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                dto.setNo_UF(editTextUF.getText().toString());
+                dto.setDs_UF(editTextUF.getText().toString());
                 dto.setNm_Cidade(editTextCidade.getText().toString());
                 dto.setNo_CEP(editTextCEP.getText().toString());
                 dto.setNm_Logradouro(editTextLogradouro.getText().toString());
@@ -105,7 +105,7 @@ public class DeliveryPreFragment extends Fragment
                 dto.setNo_Logradouro(editTextNumero.getText().toString());
                 dto.setDs_Complemento(editTextComplemento.getText().toString());
 
-                if(dto.getNo_UF().equals("") || dto.getNo_UF().length() != 2)
+                if(dto.getDs_UF().equals("") || dto.getDs_UF().length() != 2)
                     Toast.makeText(getActivity(), "É obrigatório informar o UF.", Toast.LENGTH_SHORT).show();
                 else if(dto.getNo_CEP().equals("") || dto.getNo_CEP().length()<8)
                     Toast.makeText(getActivity(), "É obrigatório informar o CEP, mínimo de 8 e máximo de 8 digitos", Toast.LENGTH_SHORT).show();

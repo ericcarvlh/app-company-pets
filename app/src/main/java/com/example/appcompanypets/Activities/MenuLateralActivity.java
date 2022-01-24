@@ -2,12 +2,14 @@ package com.example.appcompanypets.Activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.appcompanypets.DAO.DaoUsuario;
 import com.example.appcompanypets.DTO.DtoUsuario;
 import com.example.appcompanypets.R;
-import com.example.appcompanypets.ui.menu.MenuFragment;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.appcompanypets.Retrofit.ConfigRetrofit;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -19,12 +21,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appcompanypets.databinding.ActivityMenuLateralBinding;
 
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class MenuLateralActivity extends AppCompatActivity
 {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuLateralBinding binding;
     DtoUsuario dto = new DtoUsuario();
+    ArrayList<DtoUsuario> arrayList = new ArrayList<DtoUsuario>();
     TextView textViewNomeUsuario, textViewEmailUsuario;
+    ImageView imageViewCliente;
+    Retrofit retrofit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -52,13 +64,12 @@ public class MenuLateralActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         textViewEmailUsuario = headerView.findViewById(R.id.textViewEmailUsuario);
         textViewNomeUsuario = headerView.findViewById(R.id.textViewNomeUsuario);
-        if (dto!=null){
-        textViewNomeUsuario.setText(dto.getNm_Usuario());
-        textViewEmailUsuario.setText(dto.getDs_Email());
-        }
+        imageViewCliente = headerView.findViewById(R.id.imageViewCliente);
+
+        consultaDadosUsuario(DtoUsuario.cd_UsuLogin);
 
         // define as configurações do navigationdrawer
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_inicio, R.id.nav_produto, R.id.nav_mapa_da_loja, R.id.nav_carrinho).setDrawerLayout(drawer).build();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_inicio, R.id.nav_produto, R.id.nav_mapa_da_loja, R.id.nav_carrinho, R.id.nav_sair).setDrawerLayout(drawer).build();
 
         // Configura a área que vai abrir os fragments
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_lateral);
@@ -76,5 +87,38 @@ public class MenuLateralActivity extends AppCompatActivity
     {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_lateral);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
+    }
+
+    private void consultaDadosUsuario(int cd_Usuario)
+    {
+        retrofit = ConfigRetrofit.getRetrofit();
+        DaoUsuario dao = retrofit.create(DaoUsuario.class);
+        Call<ArrayList<DtoUsuario>> call = dao.dadosUsuario(cd_Usuario);
+        call.enqueue(new Callback<ArrayList<DtoUsuario>>()
+        {
+            @Override
+            public void onResponse(Call<ArrayList<DtoUsuario>> call, Response<ArrayList<DtoUsuario>> response)
+            {
+                arrayList = response.body();
+                if(arrayList.size()!=0) {
+                    dto.setNm_Usuario(arrayList.get(0).getNm_Usuario());
+                    dto.setDs_Email(arrayList.get(0).getDs_Email());
+                    dto.setSg_Sexo(arrayList.get(0).getSg_Sexo());
+                    textViewNomeUsuario.setText(dto.getNm_Usuario());
+                    textViewEmailUsuario.setText(dto.getDs_Email());
+                    if (dto.getSg_Sexo().equals("M"))
+                        imageViewCliente.setImageResource(R.drawable.usu1);
+                    else
+                        imageViewCliente.setImageResource(R.drawable.usu2);
+
+                }else
+                    Toast.makeText(MenuLateralActivity.this, "Erro ao executar a consulta.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<DtoUsuario>> call, Throwable throwable) {
+
+            }
+        });
     }
 }

@@ -1,4 +1,4 @@
-package com.example.appcompanypets.ui.carrinho;
+package com.example.appcompanypets.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -92,7 +92,7 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
     // consulta os itens que se encontram no carrinho
     public ArrayList<DtoProduto> consultarItensCarrinho()
     {
-        String comando = "SELECT * FROM " +TABELA_CARRINHO;
+        String comando = "SELECT * FROM " +TABELA_CARRINHO+ " WHERE cd_Cliente = "+ DtoUsuario.cd_UsuLogin;
         Cursor analise = getReadableDatabase().rawQuery(comando, null);
         ArrayList<DtoProduto> arraylist = new ArrayList<>();
 
@@ -104,11 +104,11 @@ public class DaoBancoCarrinho extends SQLiteOpenHelper
     // consulta a quantidade do produto no carrinho p/ fazer uma comparação com a quantidade do estoque
     public int produtoQuantidadeNoCarrinho(DtoProduto dto)
     {
-        String comando = "SELECT * FROM " +TABELA_CARRINHO+ " WHERE cd_Produto = "+ dto.getCd_Produto();
+        String comando = "SELECT * FROM " +TABELA_CARRINHO+ " WHERE cd_Produto = "+ dto.getCd_Produto()+ " and cd_Cliente ="+ DtoUsuario.cd_UsuLogin;
         Cursor analise = getReadableDatabase().rawQuery(comando, null);
         int quantidadeCarrinho = 0;
 
-        if (analise.getCount()>0)
+        if (analise.moveToNext())
             quantidadeCarrinho = analise.getInt(8);
 
         return quantidadeCarrinho;

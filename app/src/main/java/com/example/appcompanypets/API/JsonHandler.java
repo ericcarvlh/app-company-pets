@@ -1,4 +1,4 @@
-package com.example.appcompanypets.Api;
+package com.example.appcompanypets.API;
 
 import android.util.Log;
 

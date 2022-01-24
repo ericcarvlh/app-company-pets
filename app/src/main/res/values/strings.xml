@@ -24,8 +24,23 @@
     </string-array>
 
     <string-array name="spinner_parcelamento">
-        <item>Parcelas</item>
         <item>Escolha a quantidade de parcelas</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="spinner_mes">
+        <item>Mes validade</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -51,7 +66,10 @@
     <string name="menu_inicio">Início</string>
     <string name="menu_produtos">Produtos</string>
     <string name="menu_mapa_da_loja">Mapa da loja</string>
+    <string name="menu_sair_app">Sair</string>
+    <string name="menu_contato_vet">Contato veterinários</string>
     <string name="menu_carrinho">Carrinho</string>
+    <string name="menu_meusPedidos">Meus pedidos</string>
     <string name="title_activity_carrinho">CarrinhoActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

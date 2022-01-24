@@ -8,11 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.appcompanypets.DTO.DtoProduto;
 import com.example.appcompanypets.R;
-import com.example.appcompanypets.ui.carrinho.DaoBancoCarrinho;
+import com.example.appcompanypets.DAO.DaoBancoCarrinho;
 import com.squareup.picasso.Picasso;
 
 public class DetalhesProdutoActivity extends AppCompatActivity
@@ -43,6 +42,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity
 
         textViewNomeProduto.setText(dto.getNm_Produto());
         textViewPrecoProduto.setText("R$ " + dto.getVl_Produto());
+        textViewNmMarca.setText(dto.getNm_Marca());
         textViewDsProduto.setText(dto.getDs_Produto());
         Picasso.get().load(dto.getDs_Foto()).into(imageViewProduto);
 
@@ -56,7 +56,8 @@ public class DetalhesProdutoActivity extends AppCompatActivity
                 if(dao.verificaProdutoCarrinho(dto.getCd_Produto()))
                 {
                     // há no carrinho
-                    if (dto.getQt_Estoque()<=dao.produtoQuantidadeNoCarrinho(dto))
+                    // verifica se a quantidade do estoque é menor ou igual a
+                    // quantidade disponível no carrinho do cliente
                         dao.inserirQtdEValorTtProdutoCarrinho(dto);
                 }
                 else

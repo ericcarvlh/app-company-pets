@@ -1,9 +1,9 @@
-package com.example.appcompanypets.Api.Produto;
+package com.example.appcompanypets.API.Produto;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.appcompanypets.Api.JsonHandler;
+import com.example.appcompanypets.API.JsonHandler;
 import com.example.appcompanypets.DTO.DtoProduto;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.RecyclerViewAdapter;
@@ -50,7 +50,7 @@ public class AsyncProduto extends AsyncTask
                 arrayListProduto.add(dto);
             }
 
-            recyclerViewAdapter = new RecyclerViewAdapter(arrayListProduto, 0, R.layout.produto_adapter);
+            recyclerViewAdapter = new RecyclerViewAdapter(arrayListProduto, 0, R.layout.produto_adapter, null);
 
         } catch (Exception e)
         {

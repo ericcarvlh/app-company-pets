@@ -1,12 +1,10 @@
 package com.example.appcompanypets.DTO;
 
-import java.io.Serializable;
-
 public class DtoDeliveryPresente
 {
     private int cd_DeliveryPresente;
     private int cd_Entrega;
-    private String no_UF;
+    private String ds_UF;
     private String nm_Cidade;
     private String nm_Bairro;
     private String nm_Logradouro;
@@ -31,12 +29,12 @@ public class DtoDeliveryPresente
         this.cd_Entrega = cd_Entrega;
     }
 
-    public String getNo_UF() {
-        return no_UF;
+    public String getDs_UF() {
+        return ds_UF;
     }
 
-    public void setNo_UF(String no_UF) {
-        this.no_UF = no_UF;
+    public void setDs_UF(String ds_UF) {
+        this.ds_UF = ds_UF;
     }
 
     public String getNm_Cidade() {

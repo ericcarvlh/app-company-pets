@@ -41,6 +41,5 @@ public interface DaoCompra
             @Query("qt_Itens") int qt_Itens,
             @Query("vl_TotalItens") double vl_TotalItens,
             @Query("cd_Compra") int cd_Compra
-
     );
 }

@@ -17,6 +17,8 @@ public class CadastroActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+        setTitle("Cadastre-se");
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameLayoutConteudoCadastro, new CadastroFragment1());
         transaction.commit();

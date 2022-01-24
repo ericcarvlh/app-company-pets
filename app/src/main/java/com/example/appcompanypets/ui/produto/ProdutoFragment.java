@@ -15,11 +15,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.example.appcompanypets.Activities.DetalhesProdutoActivity;
-import com.example.appcompanypets.Api.Produto.AsyncProduto;
+import com.example.appcompanypets.API.Produto.AsyncProduto;
 import com.example.appcompanypets.DTO.DtoProduto;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.RecyclerItemClickListener;
-import com.example.appcompanypets.RecyclerViewAdapter;
 
 import java.io.Serializable;
 import java.util.ArrayList;

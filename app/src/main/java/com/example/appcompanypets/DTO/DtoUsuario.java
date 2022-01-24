@@ -10,7 +10,7 @@ public class DtoUsuario
     private String no_Celular;
     private String no_CPF;
     private String no_CEP;
-    private String no_UF;
+    private String ds_UF;
     private String nm_Cidade;
     private String ds_Email;
     private String ds_Senha;
@@ -20,7 +20,6 @@ public class DtoUsuario
     private String dt_Nascimento;
     private String ds_Complemento;
     public static int cd_UsuLogin;
-    public static String uf_UsuLogin;
 
     public int getCd_Usuario() {
         return cd_Usuario;
@@ -102,12 +101,12 @@ public class DtoUsuario
         this.no_CEP = no_CEP;
     }
 
-    public String getNo_UF() {
-        return no_UF;
+    public String getDs_UF() {
+        return ds_UF;
     }
 
-    public void setNo_UF(String no_UF) {
-        this.no_UF = no_UF;
+    public void setDs_UF(String ds_UF) {
+        this.ds_UF = ds_UF;
     }
 
     public String getNm_Cidade() {

@@ -14,20 +14,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.appcompanypets.Activities.CompraActivity;
+import com.example.appcompanypets.Activities.MenuLateralActivity;
+import com.example.appcompanypets.DAO.DaoBancoCarrinho;
 import com.example.appcompanypets.DTO.DtoCompra;
-import com.example.appcompanypets.DTO.DtoProduto;
 import com.example.appcompanypets.DTO.DtoUsuario;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.RecyclerViewAdapter;
 import com.example.appcompanypets.databinding.CarrinhoAdapterBinding;
 import com.example.appcompanypets.ui.produto.ProdutoFragment;
-import com.google.android.material.navigation.NavigationView;
 
 public class CarrinhoFragment extends Fragment
 {
@@ -78,34 +76,16 @@ public class CarrinhoFragment extends Fragment
 
         textViewValor.setText("R$ "+(dto.getVl_TotalCompra()));
 
-        recyclerViewAdapter = new RecyclerViewAdapter(DtoCompra.ItensCarrinho, 1, R.layout.carrinho_adapter);
+        recyclerViewAdapter = new RecyclerViewAdapter(DtoCompra.ItensCarrinho, 1, R.layout.carrinho_adapter, null);
         recyclerViewCarrinho.setLayoutManager(new LinearLayoutManager(context));
         recyclerViewCarrinho.setAdapter(recyclerViewAdapter);
-
-        imageButtonAcrescenta.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Toast.makeText(context, "Teste", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageButtonRetira.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Toast.makeText(context, "Teste", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         buttonContinuarComprando.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(context, ProdutoFragment.class);
+                Intent intent = new Intent(context, MenuLateralActivity.class);
                 startActivity(intent);
             }
         });

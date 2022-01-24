@@ -41,6 +41,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Preço"
+            android:textSize="15dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageViewProduto"
             app:layout_constraintTop_toBottomOf="@+id/textViewNomeProduto" />
 

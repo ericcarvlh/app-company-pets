@@ -17,17 +17,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appcompanypets.DAO.DaoUsuario;
 import com.example.appcompanypets.DTO.DtoCompra;
-import com.example.appcompanypets.DTO.DtoProduto;
 import com.example.appcompanypets.DTO.DtoUsuario;
 import com.example.appcompanypets.Fragments.formaPagamento.CartaoCreditoFragment;
 import com.example.appcompanypets.Fragments.formaPagamento.CartaoDebitoFragment;
 import com.example.appcompanypets.R;
 import com.example.appcompanypets.RecyclerViewAdapter;
-import com.example.appcompanypets.ui.carrinho.DaoBancoCarrinho;
+import com.example.appcompanypets.Retrofit.ConfigRetrofit;
+import com.example.appcompanypets.DAO.DaoBancoCarrinho;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CompraFragment1 extends Fragment
 {
@@ -39,9 +45,13 @@ public class CompraFragment1 extends Fragment
     TextView textViewValorParcial, textViewQuantidade;
     Button buttonContinuar;
     DtoCompra dto = new DtoCompra();
+    DtoUsuario dtoUsuario = new DtoUsuario();
+    ArrayList<DtoUsuario> arrayList = new ArrayList<DtoUsuario>();
+    Retrofit retrofit;
     String tipoEntrega;
     String formaPagamento;
     int itensQuantidadeTotal;
+    String ds_UF;
 
     public CompraFragment1()
     {
@@ -92,9 +102,11 @@ public class CompraFragment1 extends Fragment
         else
             textViewQuantidade.setText("("+(itensQuantidadeTotal)+ " Item)");
 
-        recyclerViewAdapter = new RecyclerViewAdapter(DtoCompra.ItensCarrinho, 2, R.layout.compra_adapter);
+        recyclerViewAdapter = new RecyclerViewAdapter(DtoCompra.ItensCarrinho, 2, R.layout.compra_adapter, null);
         recyclerViewItens.setLayoutManager(new LinearLayoutManager(context));
         recyclerViewItens.setAdapter(recyclerViewAdapter);
+        dtoUsuario.setDs_UF("UF");
+        enderecoUsuario(DtoUsuario.cd_UsuLogin);
 
         buttonContinuar.setOnClickListener(new View.OnClickListener()
         {
@@ -108,9 +120,9 @@ public class CompraFragment1 extends Fragment
                     tipoEntrega = "deliveryPre";
                 else if(chipDeliveryCliente.isChecked())
                     tipoEntrega = "deliveryCli";
-                else if(chipCompraLoja.isChecked() && DtoUsuario.uf_UsuLogin.equals("SP"))
+                else if(chipCompraLoja.isChecked() && ds_UF.equals("SP"))
                     tipoEntrega = "deliveryLoj";
-                else if(chipCompraLoja.isSelected() && !DtoUsuario.uf_UsuLogin.equals("SP"))
+                else if(chipCompraLoja.isSelected() && !ds_UF.equals("SP"))
                     // aqui pode ser exibido um dialogo p/ questionar se o cliente se encontra próximo a loja
                     Toast.makeText(context, "Lamentamos mas você mora muito longe para retirar na loja.", Toast.LENGTH_SHORT).show();
 
@@ -145,5 +157,30 @@ public class CompraFragment1 extends Fragment
         });
 
         return view;
+    }
+
+    private void enderecoUsuario(int cd_Usuario)
+    {
+        retrofit = ConfigRetrofit.getRetrofit();
+        DaoUsuario dao = retrofit.create(DaoUsuario.class);
+        Call<ArrayList<DtoUsuario>> call = dao.dadosUsuario(cd_Usuario);
+        call.enqueue(new Callback<ArrayList<DtoUsuario>>()
+        {
+            @Override
+            public void onResponse(Call<ArrayList<DtoUsuario>> call, Response<ArrayList<DtoUsuario>> response)
+            {
+                arrayList = response.body();
+                if(arrayList.size()!=0) {
+                    dtoUsuario.setDs_UF(arrayList.get(0).getDs_UF());
+                    dtoUsuario.setNm_Bairro(arrayList.get(0).getNm_Bairro());
+                }else
+                    Toast.makeText(context, "Erro ao executar a consulta.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<DtoUsuario>> call, Throwable throwable) {
+
+            }
+        });
     }
 }

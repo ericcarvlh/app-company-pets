@@ -33,8 +33,8 @@ public interface DaoUsuario
             @Field("no_Celular") String celular
     );
 
-    @GET("consultaEnderecoUsuario.php")
-    Call<ArrayList<DtoUsuario>> EnderecoUsuario(
-            @Query("ds_Email") int cd_Usuario
+    @GET("consultaDadosUsuario.php")
+    Call<ArrayList<DtoUsuario>> dadosUsuario(
+            @Query("cd_Usuario") int cd_Usuario
     );
 }
